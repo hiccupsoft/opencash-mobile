@@ -39,6 +39,7 @@ function AuthScreen(props) {
                     </View>
                 </View>
             </View>
+            
             <TouchableOpacity
                 style={AuthStyles.textLogin}
                 onPress={() => navigation.navigate('LoginScreen')}
@@ -47,6 +48,7 @@ function AuthScreen(props) {
                     text={'Log in'}
                     style={TextStyles.textBold16}
                 />
+
             </TouchableOpacity>
             <TouchableOpacity
                 style={AuthStyles.bottomJoinView}
