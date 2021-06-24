@@ -5,5 +5,6 @@ const Colors = {
   DARK_BLACK: 'rgb(14, 20, 30)',
   BLUE: 'rgb(64, 100, 253)',
   LIGHT_GRAY: 'rgb(231, 231, 231)',
+  BORDER:'rgba(60, 60, 67, 0.36)'
 };
 module.exports = Colors;

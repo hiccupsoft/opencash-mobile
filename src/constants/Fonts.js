@@ -1,9 +1,10 @@
 import BaseStyles from './BaseStyles';
 
-const HEIGHT = BaseStyles.DEVICE_HEIGHT / 100;
-const WIDTH = BaseStyles.DEVICE_WIDTH / 100;
-
 const Fonts = {
+  bold24: {
+    fontSize: 24,
+    fontFamily: 'Manrope-Bold',
+  },
   regular20: {
     fontSize: 20,
     fontFamily: 'Manrope-Regular',
@@ -12,13 +13,25 @@ const Fonts = {
     fontSize: 16,
     fontFamily: 'Manrope-Medium',
   },
+  semiBold16: {
+    fontSize: 16,
+    fontFamily: 'Manrope-SemiBold',
+  },
   bold16: {
     fontSize: 16,
     fontFamily: 'Manrope-Bold',
   },
+  regular15: {
+    fontSize: 15,
+    fontFamily: 'Manrope-Regular',
+  },
   medium14: {
     fontSize: 14,
     fontFamily: 'Manrope-Medium',
+  },
+  bold14: {
+    fontSize: 14,
+    fontFamily: 'Manrope-Bold',
   },
   semiBold14: {
     fontSize: 14,
@@ -28,9 +41,6 @@ const Fonts = {
     fontSize: 14,
     fontFamily: 'Manrope-Regular',
   },
-  regular15: {
-    fontSize: 15,
-    fontFamily: 'Manrope-Regular',
-  },
+
 };
 module.exports = Fonts;

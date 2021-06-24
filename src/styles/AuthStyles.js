@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import constants from '../constants';
-import {BLUE, LIGHT_GRAY, WHITE, GRAY, DARK_BLACK} from '../constants/Colors';
+import { BLUE, LIGHT_GRAY, WHITE, GRAY, DARK_BLACK } from '../constants/Colors';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
-
+const isios = Platform.OS == 'ios'
 const AuthStyles = StyleSheet.create({
   //auth screen
   authContainer: {
@@ -60,6 +60,13 @@ const AuthStyles = StyleSheet.create({
     width: WIDTH * 80,
     color: DARK_BLACK,
     ...constants.Fonts.medium16,
+  },
+  headerView: {
+    marginTop: isios ? HEIGHT * 5 : HEIGHT * 3,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: WIDTH * 5
   },
 
   //signup screen
