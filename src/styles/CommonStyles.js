@@ -1,6 +1,4 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native';
 
-const CommonStyles = StyleSheet.create({
-
-})
-export default CommonStyles
+const CommonStyles = StyleSheet.create({});
+export default CommonStyles;

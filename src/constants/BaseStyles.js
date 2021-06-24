@@ -1,11 +1,10 @@
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
-
-const x = Dimensions.get('window').width
-const y = Dimensions.get('window').height
+const x = Dimensions.get('window').width;
+const y = Dimensions.get('window').height;
 
 const BaseStyle = {
-    DEVICE_HEIGHT: y,
-    DEVICE_WIDTH: x
-}
-module.exports = BaseStyle
+  DEVICE_HEIGHT: y,
+  DEVICE_WIDTH: x,
+};
+module.exports = BaseStyle;
