@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import constants from '../constants';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
@@ -16,6 +16,9 @@ const SpaceStyles = StyleSheet.create({
   rowFlex: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  coloumnView:{
+    flexDirection:'column'
   },
   leftMargin: {
     marginLeft: WIDTH * 4,
@@ -38,5 +41,11 @@ const SpaceStyles = StyleSheet.create({
   bottom1: {
     marginBottom: HEIGHT,
   },
+  bottom2: {
+    marginBottom: HEIGHT * 2,
+  },
+  top2: {
+    marginTop: HEIGHT * 2
+  }
 });
 export default SpaceStyles;

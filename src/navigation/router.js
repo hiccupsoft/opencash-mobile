@@ -6,8 +6,8 @@ import HomeNavigator from './HomeNavigator';
 function NavigationRouter(props) {
   return (
     <NavigationContainer>
-      <AuthNavigator />
-      {/* <HomeNavigator/> */}
+      {/* <AuthNavigator /> */}
+      <HomeNavigator/>
     </NavigationContainer>
   );
 }

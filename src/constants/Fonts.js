@@ -9,6 +9,10 @@ const Fonts = {
     fontSize: 20,
     fontFamily: 'Manrope-Regular',
   },
+  bold18: {
+    fontSize: 18,
+    fontFamily: 'Manrope-Bold',
+  },
   medium16: {
     fontSize: 16,
     fontFamily: 'Manrope-Medium',

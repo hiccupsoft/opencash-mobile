@@ -11,7 +11,7 @@ import SpaceStyles from '../../styles/SpaceStyles';
 import CommonStyles from '../../styles/CommonStyles';
 import { refreshIcon, roundEdge } from '../../constants/Images'
 
-const data = [{}, {}, {}, {}, {},{}, {}, {}, {}, {},{}, {}, {}, {}, {}]
+const data = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
 function HistoryScreen(props) {
     const { navigation } = props;
 
@@ -60,12 +60,12 @@ function HistoryScreen(props) {
                     style={TextStyles.textBold24}
                 />
             </View>
-                <FlatList
-                    data={data}
-                    keyboardShouldPersistTaps="handled"
-                    showsVerticalScrollIndicator={false}
-                    renderItem={renderHistory}
-                />
+            <FlatList
+                data={data}
+                keyboardShouldPersistTaps="handled"
+                showsVerticalScrollIndicator={false}
+                renderItem={renderHistory}
+            />
         </View>
     );
 }
