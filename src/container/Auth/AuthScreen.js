@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import {View, Image, TouchableOpacity, ScrollView} from 'react-native';
 import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
-import { hand, logo, percent } from '../../constants/Images';
+import {hand, logo, percent} from '../../constants/Images';
 import CustomText from '../../components/CustomText';
 import TextStyles from '../../styles/TextStyles';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -15,9 +15,9 @@ const options = {
 };
 
 function AuthScreen(props) {
-  const { navigation } = props;
-  const [login, setLogin] = useState(false)
-  const [signup, setSignup] = useState(false)
+  const {navigation} = props;
+  const [login, setLogin] = useState(false);
+  const [signup, setSignup] = useState(false);
 
   return (
     <View style={AuthStyles.authContainer}>
@@ -81,8 +81,18 @@ function AuthScreen(props) {
         <CustomText text={'Join Opencash'} style={TextStyles.textBold16White} />
       </TouchableOpacity>
 
-      <LoginScreen login={login} setLogin={setLogin} setSignup={setSignup} props={props} />
-      <SignUpScreen signup={signup} setSignup={setSignup} setLogin={setLogin} props={props} />
+      <LoginScreen
+        login={login}
+        setLogin={setLogin}
+        setSignup={setSignup}
+        props={props}
+      />
+      <SignUpScreen
+        signup={signup}
+        setSignup={setSignup}
+        setLogin={setLogin}
+        props={props}
+      />
     </View>
   );
 }

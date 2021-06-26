@@ -1,11 +1,11 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import constants from '../constants';
-import { BLUE, DARK_BLACK, GRAY, GREEN, RED, WHITE } from '../constants/Colors';
+import {BLUE, DARK_BLACK, GRAY, GREEN, RED, WHITE} from '../constants/Colors';
 
 const TextStyles = StyleSheet.create({
   textBold24: {
     color: DARK_BLACK,
-    ...constants.Fonts.bold24   //24 bold
+    ...constants.Fonts.bold24, //24 bold
   },
   textRegular20: {
     color: DARK_BLACK,
@@ -13,11 +13,15 @@ const TextStyles = StyleSheet.create({
   },
   textBold18: {
     color: WHITE,
-    ...constants.Fonts.bold18  //18 bold
+    ...constants.Fonts.bold18, //18 bold
   },
   textBold18DarkBlack: {
     color: DARK_BLACK,
-    ...constants.Fonts.bold18  //18 bold
+    ...constants.Fonts.bold18, //18 bold
+  },
+  textBold20DarkBlack: {
+    color: DARK_BLACK,
+    ...constants.Fonts.bold20, //18 bold
   },
   textBold16: {
     color: BLUE,
@@ -33,7 +37,7 @@ const TextStyles = StyleSheet.create({
   },
   textSemiBold16: {
     color: DARK_BLACK,
-    ...constants.Fonts.semiBold16   //16 semibold
+    ...constants.Fonts.semiBold16, //16 semibold
   },
   textMedium16Green: {
     color: GREEN,
@@ -53,19 +57,31 @@ const TextStyles = StyleSheet.create({
   },
   textBold14: {
     color: GRAY,
-    ...constants.Fonts.bold14  //14 bold
+    ...constants.Fonts.bold14, //14 bold
   },
   textSemiBold14DarkBlack: {
     color: DARK_BLACK,
     ...constants.Fonts.semiBold14, //14 semibold
   },
+  textSemiBold15DarkBlack: {
+    color: DARK_BLACK,
+    ...constants.Fonts.semiBold15, //14 semibold
+  },
   textSemiBold14Green: {
     color: GREEN,
     ...constants.Fonts.semiBold14, //14 semibold
   },
+  textSemiBold15Green: {
+    color: GREEN,
+    ...constants.Fonts.semiBold15, //14 semibold
+  },
   textSemiBold14Red: {
     color: RED,
     ...constants.Fonts.semiBold14, //14 semibold
+  },
+  textSemiBold15Red: {
+    color: RED,
+    ...constants.Fonts.semiBold15, //14 semibold
   },
   textSemiBold14White: {
     color: WHITE,
@@ -83,10 +99,17 @@ const TextStyles = StyleSheet.create({
     color: GRAY,
     ...constants.Fonts.medium14, //14 medium
   },
+  textMedium15: {
+    color: GRAY,
+    ...constants.Fonts.medium15, //14 medium
+  },
+  textMedium16Gray: {
+    color: GRAY,
+    ...constants.Fonts.medium16, //14 medium
+  },
   textRegular14: {
     color: GRAY,
     ...constants.Fonts.regular14, // 14 regular
   },
-
 });
 export default TextStyles;

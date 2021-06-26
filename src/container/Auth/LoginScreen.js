@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, {useLayoutEffect} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -6,7 +6,7 @@ import {
   Platform,
   ScrollView,
   Image,
-  Text
+  Text,
 } from 'react-native';
 import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
@@ -15,7 +15,7 @@ import TextStyles from '../../styles/TextStyles';
 import CustomTextInput from '../../components/CustomTextInput';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import Modal from 'react-native-modal';
-import { cancel, logoIcon } from '../../constants/Images';
+import {cancel, logoIcon} from '../../constants/Images';
 import HeaderTitle from '../../components/headerTitle';
 
 const options = {
@@ -23,23 +23,22 @@ const options = {
   ignoreAndroidSystemSettings: false,
 };
 
-function LoginScreen({ login, setLogin, setSignup, props }) {
-  const { navigation } = props;
+function LoginScreen({login, setLogin, setSignup, props}) {
+  const {navigation} = props;
 
   return (
     <Modal
-      style={{ margin: 0, height: '100%' }}
+      style={{margin: 0, height: '100%'}}
       animationIn={'slideInUp'}
       animationOut={'slideOutDown'}
-      isVisible={login}
-    >
+      isVisible={login}>
       <View style={AuthStyles.authContainer}>
         <View style={AuthStyles.headerView}>
           <TouchableOpacity onPress={() => setLogin(false)}>
             <Image source={cancel} />
           </TouchableOpacity>
           <HeaderTitle iconName={logoIcon} />
-          <Text>{' '}</Text>
+          <Text> </Text>
         </View>
         <ScrollView keyboardDismissMode={'on-drag'}>
           <View style={SpaceStyles.spaceHorizontal}>
@@ -54,14 +53,13 @@ function LoginScreen({ login, setLogin, setSignup, props }) {
             <CustomTextInput placeholder="Email" textType={'emailAddress'} />
             <CustomTextInput placeholder="Password" secureText={true} />
             <TouchableOpacity
-              style={[SpaceStyles.spaceVertical, { alignSelf: 'flex-start' }]}
+              style={[SpaceStyles.spaceVertical, {alignSelf: 'flex-start'}]}
               onPress={() => [
                 setLogin(false),
                 setTimeout(() => {
-                  navigation.navigate('ForgotPasswordScreen')
-                }, 300)
-              ]}
-            >
+                  navigation.navigate('ForgotPasswordScreen');
+                }, 300),
+              ]}>
               <CustomText
                 text={'Forgot password'}
                 style={TextStyles.textMedium16}
@@ -69,39 +67,37 @@ function LoginScreen({ login, setLogin, setSignup, props }) {
             </TouchableOpacity>
           </View>
         </ScrollView>
-        {Platform.OS === 'ios' ?
-          <KeyboardAvoidingView
-            behavior={'position'}>
+        {Platform.OS === 'ios' ? (
+          <KeyboardAvoidingView behavior={'position'}>
             <TouchableOpacity
               style={AuthStyles.bottomJoinView}
               activeOpacity={0.8}
               onPress={() => [
                 setLogin(false),
                 setTimeout(() => {
-                  setSignup(true)
+                  setSignup(true);
                 }, 500),
                 ReactNativeHapticFeedback.trigger('impactLight', options),
               ]}>
               <CustomText text={'Log in'} style={TextStyles.textBold16White} />
             </TouchableOpacity>
           </KeyboardAvoidingView>
-          :
+        ) : (
           <TouchableOpacity
             style={AuthStyles.bottomJoinView}
             activeOpacity={0.8}
             onPress={() => [
               setLogin(false),
               setTimeout(() => {
-                setSignup(true)
+                setSignup(true);
               }, 500),
               ReactNativeHapticFeedback.trigger('impactLight', options),
             ]}>
             <CustomText text={'Log in'} style={TextStyles.textBold16White} />
           </TouchableOpacity>
-        }
+        )}
       </View>
     </Modal>
-
   );
 }
 
