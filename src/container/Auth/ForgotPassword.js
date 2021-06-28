@@ -15,6 +15,7 @@ import HeaderLeft from '../../components/headerLeft';
 import {back} from '../../constants/Images';
 import CustomTextInput from '../../components/CustomTextInput';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const options = {
   enableVibrateFallback: true,
@@ -48,7 +49,7 @@ function ForgotPasswordScreen(props) {
       </ScrollView>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'position' : null}
-        keyboardVerticalOffset={90}>
+        keyboardVerticalOffset={ifIphoneX(90, 64)}>
         <TouchableOpacity
           style={AuthStyles.bottomJoinView}
           activeOpacity={0.8}

@@ -17,6 +17,7 @@ import {
   upArrow,
   upArrowGreen,
   cart,
+  bell,
   listViewInactive,
   imageViewInactive,
   listViewActive,
@@ -30,6 +31,9 @@ import {
   Line,
 } from 'react-native-responsive-linechart';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import constants from '../../constants';
+
+const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 4;
 
 const options = {
   enableVibrateFallback: true,
@@ -44,13 +48,30 @@ function OverView() {
     return (
       <>
         <View style={SpaceStyles.alignSpaceBlock}>
-          <View>
-            <CustomText text={'BTC'} style={TextStyles.textSemiBold16} />
+          <View style={{width: WIDTH}}>
+            <View style={SpaceStyles.rowFlex}>
+              <CustomText text={'BTC'} style={TextStyles.textSemiBold16} />
+              <Image
+                source={bell}
+                resizeMode="contain"
+                style={SpaceStyles.left2}
+              />
+            </View>
             <CustomText text={'2.56097'} style={TextStyles.textMedium14} />
           </View>
           <CustomText
-            text={'$502.34'}
-            style={TextStyles.textMedium16DarkBlack}
+            text={'+15.87%'}
+            style={[
+              TextStyles.textMedium16Green,
+              {width: WIDTH, textAlign: 'center'},
+            ]}
+          />
+          <CustomText
+            text={'+$5,002.34'}
+            style={[
+              TextStyles.textMedium16Green,
+              {width: WIDTH, textAlign: 'right'},
+            ]}
           />
         </View>
         <View style={CommonStyles.lineView} />
@@ -85,12 +106,12 @@ function OverView() {
       showsVerticalScrollIndicator={false}
       style={AuthStyles.authContainer}>
       <View style={SpaceStyles.spaceHorizontal}>
-        <View style={CommonStyles.brokerageAccountView}>
+        <View style={[CommonStyles.brokerageAccountView, SpaceStyles.top2]}>
           <CustomText
             text={'Open your brokerage account'}
             style={TextStyles.textBold18}
           />
-          <View style={[SpaceStyles.alignSpaceBlock, SpaceStyles.top2]}>
+          <View style={[SpaceStyles.alignSpaceBlock, SpaceStyles.top1]}>
             <CustomText
               text={
                 'Invest in thousands of US stocks while you continue to hold your crypto assets.'

@@ -39,7 +39,7 @@ function HistoryScreen(props) {
             <Image
               source={roundEdge}
               resizeMode="contain"
-              style={SpaceStyles.left2}
+              style={SpaceStyles.left5}
             />
           </View>
         </View>
@@ -58,7 +58,7 @@ function HistoryScreen(props) {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         renderItem={renderHistory}
-        style={SpaceStyles.spaceVertical}
+        style={SpaceStyles.top2}
       />
     </View>
   );

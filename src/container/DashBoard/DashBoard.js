@@ -30,7 +30,8 @@ function DashBoard(props) {
         style={[
           SpaceStyles.alignSpaceBlock,
           SpaceStyles.spaceHorizontal,
-          SpaceStyles.spaceVertical,
+          SpaceStyles.top2,
+          SpaceStyles.bottom1,
         ]}>
         <TouchableOpacity
           activeOpacity={1}

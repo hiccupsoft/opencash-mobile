@@ -1,6 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import constants from '../constants';
 import {BLUE, BORDER, GRAY, GREEN, LIGHT_GRAY} from './../constants/Colors';
+import {ifIphoneX} from "react-native-iphone-x-helper";
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -20,7 +21,7 @@ const CommonStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    width: 110,
+    width: Platform.OS === 'ios' ? ifIphoneX(120, 110) : 110,
     height: 32,
     justifyContent: 'space-evenly',
   },
@@ -31,7 +32,7 @@ const CommonStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    width: 110,
+    width: Platform.OS === 'ios' ? ifIphoneX(120, 110) : 110,
     height: 32,
     justifyContent: 'space-evenly',
   },
@@ -75,7 +76,7 @@ const CommonStyles = StyleSheet.create({
     width: WIDTH * 20,
   },
   verticalView: {
-    height: HEIGHT * 3,
+    height: 26,
     borderRightColor: GRAY,
     borderRightWidth: StyleSheet.hairlineWidth,
   },
@@ -83,7 +84,8 @@ const CommonStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    width: WIDTH * 20,
+    width: 80,
+    height: 26,
     borderRadius: 90,
     borderColor: GRAY,
     borderWidth: StyleSheet.hairlineWidth,

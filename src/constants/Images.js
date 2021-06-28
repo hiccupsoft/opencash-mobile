@@ -21,6 +21,7 @@ module.exports = {
   upArrowGreen: require('./../assets/upArrowGreen.png'),
   forward: require('./../assets/forward.png'),
   cart: require('./../assets/cart.png'),
+  bell: require('./../assets/bell.png'),
   listViewInactive: require('./../assets/listViewInactive.png'),
   imageViewInactive: require('./../assets/imageViewInactive.png'),
   listViewActive: require('./../assets/listViewActive.png'),

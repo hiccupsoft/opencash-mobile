@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import DashBoard from '../container/DashBoard/DashBoard'
+import DashBoard from '../container/DashBoard/DashBoard';
 const Stack = createStackNavigator();
 
 function DashBoardStack(props) {

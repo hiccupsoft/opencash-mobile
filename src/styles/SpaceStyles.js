@@ -26,6 +26,9 @@ const SpaceStyles = StyleSheet.create({
   left2: {
     marginLeft: WIDTH * 2,
   },
+  left5: {
+    marginLeft: WIDTH * 5,
+  },
   spaceHorizontal: {
     marginHorizontal: WIDTH * 5,
   },
@@ -46,6 +49,9 @@ const SpaceStyles = StyleSheet.create({
   },
   bottom3: {
     marginBottom: HEIGHT * 3,
+  },
+  top1: {
+    marginTop: HEIGHT,
   },
   top2: {
     marginTop: HEIGHT * 2,

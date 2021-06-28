@@ -1,6 +1,7 @@
 import {Platform, StyleSheet} from 'react-native';
 import constants from '../constants';
 import {BLUE, LIGHT_GRAY, WHITE, GRAY, DARK_BLACK} from '../constants/Colors';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -62,7 +63,7 @@ const AuthStyles = StyleSheet.create({
     ...constants.Fonts.medium16,
   },
   headerView: {
-    marginTop: isios ? HEIGHT * 7 : HEIGHT * 3,
+    marginTop: isios ? ifIphoneX(HEIGHT * 6.5, HEIGHT * 5.5) : HEIGHT * 3,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
