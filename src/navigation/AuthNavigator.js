@@ -1,15 +1,18 @@
 import * as React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import AuthScreen from '../container/Auth/AuthScreen';
 import HeaderTitle from '../components/headerTitle';
-import {logoIcon} from '../constants/Images';
+import { logoIcon } from '../constants/Images';
 import ForgotPasswordScreen from '../container/Auth/ForgotPassword';
+import LoginScreen from '../container/Auth/LoginScreen';
+import SignUpScreen from '../container/Auth/SignUpScreen';
 
 const Stack = createStackNavigator();
 
 function AuthNavigator(props) {
   return (
-    <Stack.Navigator initialRouteName={'AuthScreen'}>
+    <Stack.Navigator
+      initialRouteName={'AuthScreen'}>
       <Stack.Screen
         options={{
           headerShown: false,
@@ -20,6 +23,25 @@ function AuthNavigator(props) {
       />
       <Stack.Screen
         options={{
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+          gestureEnabled: false,
+          headerTitle: () => <HeaderTitle iconName={logoIcon} />,
+        }}
+        name="LoginScreen"
+        component={LoginScreen}
+      />
+      <Stack.Screen
+        options={{
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+          gestureEnabled: false,
+          headerTitle: () => <HeaderTitle iconName={logoIcon} />,
+        }}
+        name="SignUpScreen"
+        component={SignUpScreen}
+      />
+      <Stack.Screen
+        options={{
+          gestureEnabled: false,
           headerTitle: () => <HeaderTitle iconName={logoIcon} />,
         }}
         name="ForgotPasswordScreen"

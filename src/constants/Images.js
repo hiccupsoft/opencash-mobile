@@ -26,4 +26,5 @@ module.exports = {
   imageViewInactive: require('./../assets/imageViewInactive.png'),
   listViewActive: require('./../assets/listViewActive.png'),
   imageViewActive: require('./../assets/imageViewActive.png'),
+  starIcon: require('./../assets/starIcon.png'),
 };

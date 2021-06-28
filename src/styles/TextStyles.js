@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import constants from '../constants';
-import {BLUE, DARK_BLACK, GRAY, GREEN, RED, WHITE} from '../constants/Colors';
+import { BLUE, DARK_BLACK, DARK_RED, GRAY, GREEN, RED, WHITE, DARK_GRAY } from '../constants/Colors';
 
 const TextStyles = StyleSheet.create({
   textBold24: {
@@ -11,6 +11,10 @@ const TextStyles = StyleSheet.create({
     color: DARK_BLACK,
     ...constants.Fonts.regular20, //20 regular
   },
+  textBold20DarkBlack: {
+    color: DARK_BLACK,
+    ...constants.Fonts.bold20, //20 bold
+  },
   textBold18: {
     color: WHITE,
     ...constants.Fonts.bold18, //18 bold
@@ -18,10 +22,6 @@ const TextStyles = StyleSheet.create({
   textBold18DarkBlack: {
     color: DARK_BLACK,
     ...constants.Fonts.bold18, //18 bold
-  },
-  textBold20DarkBlack: {
-    color: DARK_BLACK,
-    ...constants.Fonts.bold20, //18 bold
   },
   textBold16: {
     color: BLUE,
@@ -43,6 +43,10 @@ const TextStyles = StyleSheet.create({
     color: GREEN,
     ...constants.Fonts.medium16, //16 medium
   },
+  textMedium16Gray: {
+    color: GRAY,
+    ...constants.Fonts.medium16, //16 medium
+  },
   textMedium16: {
     color: BLUE,
     ...constants.Fonts.medium16, //16 medium
@@ -51,9 +55,25 @@ const TextStyles = StyleSheet.create({
     color: DARK_BLACK,
     ...constants.Fonts.medium16, //16 medium
   },
+  textSemiBold15DarkBlack: {
+    color: DARK_BLACK,
+    ...constants.Fonts.semiBold15, //14 semibold
+  },
   textRegular15: {
     color: GRAY,
     ...constants.Fonts.regular15, // 15 regular
+  },
+  textSemiBold15Green: {
+    color: GREEN,
+    ...constants.Fonts.semiBold15, //15 semibold
+  },
+  textSemiBold15Red: {
+    color: RED,
+    ...constants.Fonts.semiBold15, //15 semibold
+  },
+  textMedium15: {
+    color: GRAY,
+    ...constants.Fonts.medium15, //15 medium
   },
   textBold14: {
     color: GRAY,
@@ -63,25 +83,13 @@ const TextStyles = StyleSheet.create({
     color: DARK_BLACK,
     ...constants.Fonts.semiBold14, //14 semibold
   },
-  textSemiBold15DarkBlack: {
-    color: DARK_BLACK,
-    ...constants.Fonts.semiBold15, //14 semibold
-  },
   textSemiBold14Green: {
     color: GREEN,
     ...constants.Fonts.semiBold14, //14 semibold
   },
-  textSemiBold15Green: {
-    color: GREEN,
-    ...constants.Fonts.semiBold15, //14 semibold
-  },
   textSemiBold14Red: {
     color: RED,
     ...constants.Fonts.semiBold14, //14 semibold
-  },
-  textSemiBold15Red: {
-    color: RED,
-    ...constants.Fonts.semiBold15, //14 semibold
   },
   textSemiBold14White: {
     color: WHITE,
@@ -89,6 +97,10 @@ const TextStyles = StyleSheet.create({
   },
   textSemiBold14: {
     color: BLUE,
+    ...constants.Fonts.semiBold14, //14 semibold
+  },
+  textSemiBold14DarkRed: {
+    color: DARK_RED,
     ...constants.Fonts.semiBold14, //14 semibold
   },
   textMedium14White: {
@@ -99,13 +111,9 @@ const TextStyles = StyleSheet.create({
     color: GRAY,
     ...constants.Fonts.medium14, //14 medium
   },
-  textMedium15: {
-    color: GRAY,
-    ...constants.Fonts.medium15, //14 medium
-  },
-  textMedium16Gray: {
-    color: GRAY,
-    ...constants.Fonts.medium16, //14 medium
+  textMedium14DarkGray: {
+    color: DARK_GRAY,
+    ...constants.Fonts.medium14, //14 medium
   },
   textRegular14: {
     color: GRAY,

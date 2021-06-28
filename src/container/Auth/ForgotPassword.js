@@ -1,7 +1,6 @@
-import React, {useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import {
   View,
-  Image,
   TouchableOpacity,
   ScrollView,
   Platform,
@@ -12,10 +11,11 @@ import SpaceStyles from '../../styles/SpaceStyles';
 import CustomText from '../../components/CustomText';
 import TextStyles from '../../styles/TextStyles';
 import HeaderLeft from '../../components/headerLeft';
-import {back} from '../../constants/Images';
+import { back } from '../../constants/Images';
 import CustomTextInput from '../../components/CustomTextInput';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import {ifIphoneX} from 'react-native-iphone-x-helper';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
+import HeaderRight from '../../components/headerRight';
 
 const options = {
   enableVibrateFallback: true,
@@ -23,12 +23,15 @@ const options = {
 };
 
 function ForgotPasswordScreen(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
         <HeaderLeft iconName={back} onPress={() => navigation.goBack()} />
       ),
+      headerRight: () => (
+        <HeaderRight />
+      )
     });
   }, [navigation]);
 

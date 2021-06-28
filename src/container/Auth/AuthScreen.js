@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
-import {View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import React, { useState } from 'react';
+import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
-import {hand, logo, percent} from '../../constants/Images';
+import { hand, logo, percent } from '../../constants/Images';
 import CustomText from '../../components/CustomText';
 import TextStyles from '../../styles/TextStyles';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import LoginScreen from './LoginScreen';
-import SignUpScreen from './SignUpScreen';
 
 const options = {
   enableVibrateFallback: true,
@@ -15,9 +13,7 @@ const options = {
 };
 
 function AuthScreen(props) {
-  const {navigation} = props;
-  const [login, setLogin] = useState(false);
-  const [signup, setSignup] = useState(false);
+  const { navigation } = props;
 
   return (
     <View style={AuthStyles.authContainer}>
@@ -66,7 +62,7 @@ function AuthScreen(props) {
       <TouchableOpacity
         style={AuthStyles.textLogin}
         onPress={() => [
-          setLogin(true),
+          navigation.navigate('LoginScreen'),
           ReactNativeHapticFeedback.trigger('impactLight', options),
         ]}>
         <CustomText text={'Log in'} style={[TextStyles.textBold16]} />
@@ -75,24 +71,11 @@ function AuthScreen(props) {
         style={AuthStyles.bottomJoinView}
         activeOpacity={0.8}
         onPress={() => [
-          setSignup(true),
+          navigation.navigate('SignUpScreen'),
           ReactNativeHapticFeedback.trigger('impactLight', options),
         ]}>
         <CustomText text={'Join Opencash'} style={TextStyles.textBold16White} />
       </TouchableOpacity>
-
-      <LoginScreen
-        login={login}
-        setLogin={setLogin}
-        setSignup={setSignup}
-        props={props}
-      />
-      <SignUpScreen
-        signup={signup}
-        setSignup={setSignup}
-        setLogin={setLogin}
-        props={props}
-      />
     </View>
   );
 }

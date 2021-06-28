@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Image,
@@ -32,6 +32,7 @@ import {
 } from 'react-native-responsive-linechart';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import constants from '../../constants';
+import { GRAY, GREEN, LIGHT_GRAY, NAVY_BLUE, ORANGE, PURPLE } from '../../constants/Colors';
 
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 4;
 
@@ -41,14 +42,19 @@ const options = {
 };
 
 const data = [{}, {}, {}, {}, {}];
-function OverView() {
+const dayFilterData = [{ 'type': '1D' }, { 'type': '5D' }, { 'type': '1M' }, { 'type': 'YTD' }, { 'type': '1Y' }, { 'type': '2Y' }, { 'type': 'ALL' }];
+
+function OverView({ props }) {
   const [isIcon, setIsIcon] = useState('view');
 
-  const renderCrypto = ({item, index}) => {
+  const [dayFilter, setDayFilter] = useState('1D');
+  const { navigation } = props
+
+  const renderCrypto = ({ item, index }) => {
     return (
       <>
         <View style={SpaceStyles.alignSpaceBlock}>
-          <View style={{width: WIDTH}}>
+          <View style={{ width: WIDTH }}>
             <View style={SpaceStyles.rowFlex}>
               <CustomText text={'BTC'} style={TextStyles.textSemiBold16} />
               <Image
@@ -63,14 +69,14 @@ function OverView() {
             text={'+15.87%'}
             style={[
               TextStyles.textMedium16Green,
-              {width: WIDTH, textAlign: 'center'},
+              { width: WIDTH, textAlign: 'center' },
             ]}
           />
           <CustomText
             text={'+$5,002.34'}
             style={[
               TextStyles.textMedium16Green,
-              {width: WIDTH, textAlign: 'right'},
+              { width: WIDTH, textAlign: 'right' },
             ]}
           />
         </View>
@@ -79,7 +85,7 @@ function OverView() {
     );
   };
 
-  const renderStocks = ({item, index}) => {
+  const renderStocks = ({ item, index }) => {
     return (
       <>
         <View style={SpaceStyles.alignSpaceBlock}>
@@ -101,6 +107,14 @@ function OverView() {
       </>
     );
   };
+
+  const renderDayFilter = ({ item, index }) => {
+    return (
+      <TouchableOpacity style={dayFilter == item.type ? CommonStyles.selectedDayBox : CommonStyles.unSelectedDayBox} onPress={() => setDayFilter(item.type)}>
+        <CustomText text={item.type} style={dayFilter == item.type ? TextStyles.textSemiBold14Green : TextStyles.textSemiBold14DarkBlack} />
+      </TouchableOpacity>
+    )
+  }
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -119,12 +133,12 @@ function OverView() {
               style={[TextStyles.textMedium14White, CommonStyles.textWidth]}
             />
             <Image
-              style={{resizeMode: 'contain', width: 46, height: 48}}
+              style={{ resizeMode: 'contain', width: 46, height: 48 }}
               source={whiteStars}
             />
           </View>
         </View>
-        <View style={{marginTop: 15}}>
+        <View style={{ marginTop: 15 }}>
           <View style={CommonStyles.lineView} />
           <Image
             source={upArrow}
@@ -171,36 +185,87 @@ function OverView() {
         <Chart
           style={CommonStyles.chartView}
           data={[
-            {x: 0, y: 0},
-            {x: 1, y: 3},
-            {x: 2, y: 8},
-            {x: 3, y: 1},
-            {x: 4, y: 7},
-            {x: 5, y: 3},
-            {x: 7, y: 0},
+            { x: 0, y: 0 },
+            { x: 1, y: 3 },
+            { x: 2, y: 8 },
+            { x: 3, y: 1 },
+            { x: 4, y: 7 },
+            { x: 5, y: 3 },
+            { x: 7, y: 0 },
           ]}
-          padding={{bottom: 0, right: 0, top: 0, left: 0}}>
+          padding={{ bottom: 0, right: 0, top: 0, left: 0 }}>
           <Line
             smoothing="bezier"
             tension={0.15}
-            theme={{stroke: {color: 'blue', width: 2}}}
+            theme={{ stroke: { color: 'blue', width: 2 } }}
           />
           <Line
             smoothing="bezier"
             tension={0.45}
-            theme={{stroke: {color: 'green', width: 2}}}
+            theme={{ stroke: { color: 'green', width: 2 } }}
           />
           <Line
             smoothing="cubic-spline"
             tension={0.65}
-            theme={{stroke: {color: 'orange', width: 2}}}
+            theme={{ stroke: { color: 'orange', width: 2 } }}
           />
           <Line
             smoothing="bezier"
             tension={0.84}
-            theme={{stroke: {color: 'red', width: 2}}}
+            theme={{ stroke: { color: 'red', width: 2 } }}
           />
         </Chart>
+
+        <FlatList
+          data={dayFilterData}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+          horizontal={true}
+          renderItem={renderDayFilter}
+          style={SpaceStyles.top2}
+        />
+
+        <View style={[SpaceStyles.alignSpaceBlock, SpaceStyles.spaceVertical]}>
+          <TouchableOpacity style={CommonStyles.boxView} onPress={() => navigation.navigate('StockPositionScreen')}>
+            <View style={SpaceStyles.rowFlex}>
+              <View style={[CommonStyles.verticalDot, { backgroundColor: ORANGE }]} />
+              <CustomText
+                text={'S&P 500'}
+                style={TextStyles.textSemiBold14DarkBlack}
+              />
+            </View>
+            <CustomText
+              text={'+1.04%'}
+              style={TextStyles.textSemiBold14Green}
+            />
+          </TouchableOpacity>
+          <View style={[CommonStyles.boxView, { borderColor: NAVY_BLUE }]}>
+            <View style={SpaceStyles.rowFlex}>
+              <View style={[CommonStyles.verticalDot, { backgroundColor: NAVY_BLUE }]} />
+              <CustomText
+                text={'Dow Jones'}
+                style={TextStyles.textSemiBold14DarkBlack}
+              />
+            </View>
+            <CustomText
+              text={'+1.04%'}
+              style={TextStyles.textSemiBold14Green}
+            />
+          </View>
+          <View style={[CommonStyles.boxView, { borderColor: LIGHT_GRAY }]}>
+            <View style={SpaceStyles.rowFlex}>
+              <View style={[CommonStyles.verticalDot, { backgroundColor: PURPLE }]} />
+              <CustomText
+                text={'S&P 500'}
+                style={TextStyles.textSemiBold14DarkBlack}
+              />
+            </View>
+            <CustomText
+              text={'-1.04%'}
+              style={TextStyles.textSemiBold14Red}
+            />
+          </View>
+        </View>
         <View style={[SpaceStyles.alignSpaceBlock, SpaceStyles.spaceVertical]}>
           <CustomText text={'Stocks'} style={TextStyles.textBold20DarkBlack} />
           <View style={CommonStyles.iconRowView}>
