@@ -15,7 +15,7 @@ module.exports = {
   roundEdge: require('./../assets/roundEdge.png'),
   overview: require('./../assets/overview.png'),
   star: require('./../assets/star.png'),
-  whiteStars: require('./../assets/whiteStars.png'),
+  whiteFlare: require('./../assets/whiteflare.png'),
   summary: require('./../assets/summary.png'),
   upArrow: require('./../assets/upArrow.png'),
   upArrowGreen: require('./../assets/upArrowGreen.png'),

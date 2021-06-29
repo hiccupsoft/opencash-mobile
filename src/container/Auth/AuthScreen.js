@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import {View, Image, TouchableOpacity, ScrollView} from 'react-native';
 import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
-import { hand, logo, percent } from '../../constants/Images';
+import {hand, logo, percent} from '../../constants/Images';
 import CustomText from '../../components/CustomText';
 import TextStyles from '../../styles/TextStyles';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -13,7 +13,7 @@ const options = {
 };
 
 function AuthScreen(props) {
-  const { navigation } = props;
+  const {navigation} = props;
 
   return (
     <View style={AuthStyles.authContainer}>

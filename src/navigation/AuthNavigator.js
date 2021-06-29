@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import AuthScreen from '../container/Auth/AuthScreen';
 import HeaderTitle from '../components/headerTitle';
-import { logoIcon } from '../constants/Images';
+import {logoIcon} from '../constants/Images';
 import ForgotPasswordScreen from '../container/Auth/ForgotPassword';
 import LoginScreen from '../container/Auth/LoginScreen';
 import SignUpScreen from '../container/Auth/SignUpScreen';

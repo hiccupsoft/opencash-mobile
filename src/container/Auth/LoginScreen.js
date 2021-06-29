@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, {useLayoutEffect} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -12,7 +12,7 @@ import CustomText from '../../components/CustomText';
 import TextStyles from '../../styles/TextStyles';
 import CustomTextInput from '../../components/CustomTextInput';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { cancel } from '../../constants/Images';
+import {cancel} from '../../constants/Images';
 import HeaderLeft from '../../components/headerLeft';
 import HeaderRight from '../../components/headerRight';
 
@@ -22,15 +22,13 @@ const options = {
 };
 
 function LoginScreen(props) {
-  const { navigation } = props;
+  const {navigation} = props;
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
         <HeaderLeft iconName={cancel} onPress={() => navigation.goBack()} />
       ),
-      headerRight: () => (
-        <HeaderRight />
-      )
+      headerRight: () => <HeaderRight />,
     });
   }, [navigation]);
 
@@ -49,10 +47,8 @@ function LoginScreen(props) {
           <CustomTextInput placeholder="Email" textType={'emailAddress'} />
           <CustomTextInput placeholder="Password" secureText={true} />
           <TouchableOpacity
-            style={[SpaceStyles.spaceVertical, { alignSelf: 'flex-start' }]}
-            onPress={() => [
-              navigation.navigate('ForgotPasswordScreen')
-            ]}>
+            style={[SpaceStyles.spaceVertical, {alignSelf: 'flex-start'}]}
+            onPress={() => [navigation.navigate('ForgotPasswordScreen')]}>
             <CustomText
               text={'Forgot password'}
               style={TextStyles.textMedium16}

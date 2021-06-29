@@ -1,7 +1,15 @@
-import { Platform, StyleSheet } from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import constants from '../constants';
-import { BLUE, BORDER, GRAY, GREEN, LIGHT_GRAY, ORANGE } from './../constants/Colors';
-import { ifIphoneX } from "react-native-iphone-x-helper";
+import {
+  BLUE,
+  BORDER,
+  GRAY,
+  GREEN,
+  LIGHT_GRAY,
+  ORANGE,
+  WHITE,
+} from './../constants/Colors';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -21,7 +29,7 @@ const CommonStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    width: Platform.OS === 'ios' ? ifIphoneX(120, 110) : 110,
+    width: Platform.OS === 'ios' ? ifIphoneX(110, 110) : 110,
     height: 32,
     justifyContent: 'space-evenly',
   },
@@ -32,7 +40,7 @@ const CommonStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    width: Platform.OS === 'ios' ? ifIphoneX(120, 110) : 110,
+    width: Platform.OS === 'ios' ? ifIphoneX(110, 110) : 110,
     height: 32,
     justifyContent: 'space-evenly',
   },
@@ -77,8 +85,8 @@ const CommonStyles = StyleSheet.create({
   },
   verticalView: {
     height: 26,
-    borderRightColor: GRAY,
-    borderRightWidth: StyleSheet.hairlineWidth,
+    borderRightColor: LIGHT_GRAY,
+    borderRightWidth: 1,
   },
   iconRowView: {
     flexDirection: 'row',
@@ -87,8 +95,8 @@ const CommonStyles = StyleSheet.create({
     width: 80,
     height: 26,
     borderRadius: 90,
-    borderColor: GRAY,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: LIGHT_GRAY,
+    borderWidth: 1,
   },
   boxView: {
     borderRadius: 4,
@@ -97,29 +105,33 @@ const CommonStyles = StyleSheet.create({
     width: WIDTH * 27,
     paddingVertical: HEIGHT * 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
-  dayBoxView: {
-    paddingVertical: HEIGHT * 2,
-    marginTop: HEIGHT * 3,
+  dayBoxContentView: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    width: WIDTH * 90
+    alignItems: 'center',
+    width: WIDTH * 100 - 40,
   },
   selectedDayBox: {
+    height: 24,
+    width: 36,
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 6,
     borderColor: GREEN,
-    paddingHorizontal: 5,
-    paddingVertical: 2,
     backgroundColor: 'rgba(0, 171, 89, 0.1)',
-    marginRight: WIDTH * 6
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   unSelectedDayBox: {
-    paddingHorizontal: 5,
-    marginRight: WIDTH * 6,
-    paddingVertical: 2,
+    height: 24,
+    width: 36,
+    borderWidth: 1,
+    borderRadius: 6,
+    borderColor: WHITE,
+    backgroundColor: WHITE,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   // stock position

@@ -30,7 +30,7 @@ const SpaceStyles = StyleSheet.create({
     marginLeft: WIDTH * 5,
   },
   spaceHorizontal: {
-    marginHorizontal: WIDTH * 5,
+    marginHorizontal: 20,
   },
   vertical1: {
     marginVertical: HEIGHT,
