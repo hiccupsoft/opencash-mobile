@@ -1,4 +1,4 @@
-import {Platform, StyleSheet} from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import constants from '../constants';
 import {
   BLUE,
@@ -8,8 +8,9 @@ import {
   LIGHT_GRAY,
   ORANGE,
   WHITE,
+  OFF_WHITE
 } from './../constants/Colors';
-import {ifIphoneX} from 'react-native-iphone-x-helper';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -152,5 +153,32 @@ const CommonStyles = StyleSheet.create({
     width: WIDTH * 90,
     marginTop: HEIGHT * 3,
   },
+  horizontalBlueLine: {
+    height: HEIGHT * 0.7,
+    width: WIDTH * 8,
+    backgroundColor: BLUE,
+    marginHorizontal: WIDTH * 1,
+    borderRadius: 10
+  },
+  horizontalGrayLine: {
+    height: HEIGHT * 0.7,
+    width: WIDTH * 8,
+    backgroundColor: OFF_WHITE,
+    marginHorizontal: WIDTH * 1
+  },
+  newsImageView: {
+    height: HEIGHT * 6,
+    width: HEIGHT * 6
+  },
+  modalView: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    bottom: 0,
+    width: WIDTH * 100,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    paddingHorizontal: WIDTH * 5,
+    paddingVertical: HEIGHT * 2
+  }
 });
 export default CommonStyles;

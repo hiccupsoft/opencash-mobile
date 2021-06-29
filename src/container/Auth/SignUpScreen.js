@@ -12,13 +12,14 @@ import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
 import CustomText from '../../components/CustomText';
 import TextStyles from '../../styles/TextStyles';
-import { cancel, logoIcon } from '../../constants/Images';
+import { cancel, logoIcon, whiteFlare } from '../../constants/Images';
 import CustomTextInput from '../../components/CustomTextInput';
 import CheckBox from 'react-native-check-box';
 import { GRAY, BLUE } from '../../constants/Colors';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import HeaderRight from '../../components/headerRight';
 import HeaderLeft from '../../components/headerLeft';
+import HeaderTitle from '../../components/headerTitle';
 
 const options = {
   enableVibrateFallback: true,
@@ -29,18 +30,23 @@ function SignUpScreen(props) {
   const [isChecked, setIsChecked] = useState(false);
   const { navigation } = props
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <HeaderLeft iconName={cancel} onPress={() => navigation.goBack()} />
-      ),
-      headerRight: () => (
-        <HeaderRight />
-      )
-    });
-  }, [navigation]);
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerLeft: () => (
+  //       <HeaderLeft iconName={cancel} onPress={() => navigation.goBack()} />
+  //     ),
+  //     headerRight: () => (
+  //       <HeaderRight />
+  //     )
+  //   });
+  // }, [navigation]);
   return (
     <View style={AuthStyles.authContainer}>
+      <View style={AuthStyles.headerLoginView}>
+        <HeaderLeft iconName={cancel} onPress={() => navigation.goBack()} />
+        <HeaderTitle iconName={whiteFlare} />
+        <HeaderRight />
+      </View>
       <ScrollView keyboardDismissMode={'on-drag'}>
         <View style={SpaceStyles.spaceHorizontal}>
           <CustomText

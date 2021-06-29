@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, { useLayoutEffect } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -12,9 +12,11 @@ import CustomText from '../../components/CustomText';
 import TextStyles from '../../styles/TextStyles';
 import CustomTextInput from '../../components/CustomTextInput';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import {cancel} from '../../constants/Images';
+import { cancel, whiteFlare } from '../../constants/Images';
 import HeaderLeft from '../../components/headerLeft';
 import HeaderRight from '../../components/headerRight';
+import HeaderTitle from '../../components/headerTitle';
+import CommonStyles from '../../styles/CommonStyles';
 
 const options = {
   enableVibrateFallback: true,
@@ -22,18 +24,15 @@ const options = {
 };
 
 function LoginScreen(props) {
-  const {navigation} = props;
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <HeaderLeft iconName={cancel} onPress={() => navigation.goBack()} />
-      ),
-      headerRight: () => <HeaderRight />,
-    });
-  }, [navigation]);
+  const { navigation } = props;
 
   return (
     <View style={AuthStyles.authContainer}>
+      <View style={AuthStyles.headerLoginView}>
+        <HeaderLeft iconName={cancel} onPress={() => navigation.goBack()} />
+        <HeaderTitle iconName={whiteFlare} />
+        <HeaderRight />
+      </View>
       <ScrollView keyboardDismissMode={'on-drag'}>
         <View style={SpaceStyles.spaceHorizontal}>
           <CustomText
@@ -47,7 +46,7 @@ function LoginScreen(props) {
           <CustomTextInput placeholder="Email" textType={'emailAddress'} />
           <CustomTextInput placeholder="Password" secureText={true} />
           <TouchableOpacity
-            style={[SpaceStyles.spaceVertical, {alignSelf: 'flex-start'}]}
+            style={[SpaceStyles.spaceVertical, { alignSelf: 'flex-start' }]}
             onPress={() => [navigation.navigate('ForgotPasswordScreen')]}>
             <CustomText
               text={'Forgot password'}

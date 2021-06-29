@@ -13,6 +13,8 @@ const Colors = {
   NAVY_BLUE: 'rgb(31, 120, 180)',
   PURPLE: 'rgb(175, 82, 222)',
   DARK_RED: 'rgb(252, 62, 48)',
-  DARK_GRAY: 'rgb(153, 153, 153)'
+  DARK_GRAY: 'rgb(153, 153, 153)',
+  OFF_WHITE: "rgba(116, 116, 128, 0.18)",
+  DARK_YELLOW: "rgb(211, 159, 73)"
 };
 module.exports = Colors;

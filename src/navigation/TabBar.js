@@ -1,31 +1,41 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, TouchableOpacity, Image, Platform} from 'react-native';
-import {BLUE, GRAY, WHITE} from '../constants/Colors';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Image,
+  Platform,
+} from 'react-native';
+import { BLUE, GRAY, WHITE } from '../constants/Colors';
 import constants from '../constants';
-import {account, history, portfolio, search} from '../constants/Images';
-import {ifIphoneX} from "react-native-iphone-x-helper";
+import { account, history, portfolio, historyTabIcon, portfolioSelected, searchTabIcon, searchSelected, historySelected, accountSelected } from '../constants/Images';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const tabBarConfig = [
   {
     icon: portfolio,
+    selectedIcon: portfolioSelected,
     name: 'DashBoardStack',
   },
   {
-    icon: search,
+    icon: searchTabIcon,
+    selectedIcon: searchSelected,
     name: 'SearchStack',
   },
   {
-    icon: history,
+    icon: historyTabIcon,
+    selectedIcon: historySelected,
     name: 'HistoryStack',
   },
   {
     icon: account,
+    selectedIcon: accountSelected,
     name: 'AccountStack',
   },
 ];
 
 function TabBar(props) {
-  const {descriptors, navigation, state} = props;
+  const { descriptors, navigation, state } = props;
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
   if (focusedOptions.tabBarVisible === false) {
@@ -55,7 +65,7 @@ function TabBar(props) {
             onPress={onPress}
             style={styles.singleTab}>
             <Image
-              source={route.icon}
+              source={isFocused ? route.selectedIcon : route.icon}
               style={isFocused ? styles.selectedIcon : styles.unSelectedIcon}
               resizeMode="contain"
             />
@@ -79,18 +89,14 @@ const styles = StyleSheet.create({
     borderTopColor: 'rgba(0, 0, 0, 0.25)',
   },
   singleTab: {
-    paddingHorizontal: (constants.BaseStyle.DEVICE_WIDTH / 100) * 5,
+    width: (constants.BaseStyle.DEVICE_WIDTH / 100) * 25,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   selectedIcon: {
-    height: Platform.OS === 'ios' ? ifIphoneX(50, 40) : 48,
-    width: (constants.BaseStyle.DEVICE_WIDTH / 100) * 5.5,
     marginBottom: Platform.OS === 'ios' ? ifIphoneX(30, 10) : 10,
-    tintColor: BLUE,
   },
   unSelectedIcon: {
-    height: Platform.OS === 'ios' ? ifIphoneX(50, 40) : 48,
-    width: (constants.BaseStyle.DEVICE_WIDTH / 100) * 5.5,
     marginBottom: Platform.OS === 'ios' ? ifIphoneX(30, 10) : 10,
-    tintColor: GRAY,
   },
 });

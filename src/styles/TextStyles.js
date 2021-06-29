@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import constants from '../constants';
-import { BLUE, DARK_BLACK, DARK_RED, GRAY, GREEN, RED, WHITE, DARK_GRAY } from '../constants/Colors';
+import { BLUE, DARK_BLACK, DARK_RED, GRAY, GREEN, RED, WHITE, DARK_GRAY, DARK_YELLOW } from '../constants/Colors';
 
 const TextStyles = StyleSheet.create({
   textBold24: {
@@ -47,6 +47,10 @@ const TextStyles = StyleSheet.create({
     color: GRAY,
     ...constants.Fonts.medium16, //16 medium
   },
+  textMedium16DarkGray: {
+    color: DARK_GRAY,
+    ...constants.Fonts.medium16, //16 medium
+  },
   textMedium16: {
     color: BLUE,
     ...constants.Fonts.medium16, //16 medium
@@ -81,6 +85,10 @@ const TextStyles = StyleSheet.create({
   },
   textSemiBold14DarkBlack: {
     color: DARK_BLACK,
+    ...constants.Fonts.semiBold14, //14 semibold
+  },
+  textSemiBold14DarkYellow: {
+    color: DARK_YELLOW,
     ...constants.Fonts.semiBold14, //14 semibold
   },
   textSemiBold14Green: {

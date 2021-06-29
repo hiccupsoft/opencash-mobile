@@ -42,7 +42,7 @@ const AuthStyles = StyleSheet.create({
     bottom: 0,
     backgroundColor: BLUE,
     width: WIDTH * 100,
-    height: HEIGHT * 9,
+    height: HEIGHT * 7,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -64,6 +64,13 @@ const AuthStyles = StyleSheet.create({
   },
   headerView: {
     marginTop: isios ? ifIphoneX(HEIGHT * 6.5, HEIGHT * 5.5) : HEIGHT * 3,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: WIDTH * 5,
+  },
+  headerLoginView: {
+    marginTop: isios ? HEIGHT * 3 : HEIGHT * 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
