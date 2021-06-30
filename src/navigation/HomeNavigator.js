@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBar from './TabBar';
 import DashBoardStack from './DashBoardStack';
 import HistoryScreen from '../container/History/HistoryScreen';
@@ -23,6 +23,9 @@ function HomeNavigator(props) {
       <Stack.Screen
         options={{
           headerTitle: () => <HeaderTitleText titleName={'NFLX'} />,
+          headerStyle: {
+            shadowColor: 'transparent',
+          },
         }}
         name="StockPositionScreen"
         component={StockPosition}

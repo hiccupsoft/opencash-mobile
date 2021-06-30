@@ -1,7 +1,7 @@
-import { Platform, StyleSheet } from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import constants from '../constants';
-import { BLUE, LIGHT_GRAY, WHITE, GRAY, DARK_BLACK } from '../constants/Colors';
-import { ifIphoneX } from 'react-native-iphone-x-helper';
+import {BLUE, LIGHT_GRAY, WHITE, GRAY, DARK_BLACK} from '../constants/Colors';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -42,7 +42,7 @@ const AuthStyles = StyleSheet.create({
     bottom: 0,
     backgroundColor: BLUE,
     width: WIDTH * 100,
-    height: HEIGHT * 7,
+    height: HEIGHT * 9,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -70,11 +70,11 @@ const AuthStyles = StyleSheet.create({
     marginHorizontal: WIDTH * 5,
   },
   headerLoginView: {
-    marginTop: isios ? HEIGHT * 3 : HEIGHT * 0,
+    marginTop: isios ? HEIGHT * 6 : 0,
+    paddingBottom: 5,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginHorizontal: WIDTH * 5,
   },
 
   //signup screen

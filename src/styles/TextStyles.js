@@ -83,6 +83,10 @@ const TextStyles = StyleSheet.create({
     color: GRAY,
     ...constants.Fonts.bold14, //14 bold
   },
+  textBold14DarkBlack: {
+    color: DARK_BLACK,
+    ...constants.Fonts.bold14, //14 bold
+  },
   textSemiBold14DarkBlack: {
     color: DARK_BLACK,
     ...constants.Fonts.semiBold14, //14 semibold

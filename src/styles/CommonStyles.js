@@ -1,16 +1,17 @@
-import { Platform, StyleSheet } from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import constants from '../constants';
 import {
   BLUE,
   BORDER,
   GRAY,
   GREEN,
+  RED,
   LIGHT_GRAY,
   ORANGE,
   WHITE,
-  OFF_WHITE
+  OFF_WHITE,
 } from './../constants/Colors';
-import { ifIphoneX } from 'react-native-iphone-x-helper';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -114,13 +115,23 @@ const CommonStyles = StyleSheet.create({
     alignItems: 'center',
     width: WIDTH * 100 - 40,
   },
-  selectedDayBox: {
+  selectedDayGreenBox: {
     height: 24,
     width: 36,
     borderWidth: 1,
     borderRadius: 6,
     borderColor: GREEN,
     backgroundColor: 'rgba(0, 171, 89, 0.1)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  selectedDayRedBox: {
+    height: 24,
+    width: 36,
+    borderWidth: 1,
+    borderRadius: 6,
+    borderColor: RED,
+    backgroundColor: 'rgba(252, 62, 48, 0.1)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -140,13 +151,12 @@ const CommonStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: HEIGHT * 1,
+    paddingVertical: HEIGHT,
   },
   amountStatusView: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: HEIGHT * 1,
   },
   stockChartView: {
     height: HEIGHT * 25,
@@ -154,21 +164,22 @@ const CommonStyles = StyleSheet.create({
     marginTop: HEIGHT * 3,
   },
   horizontalBlueLine: {
-    height: HEIGHT * 0.7,
+    height: HEIGHT * 0.5,
     width: WIDTH * 8,
     backgroundColor: BLUE,
-    marginHorizontal: WIDTH * 1,
-    borderRadius: 10
+    marginHorizontal: WIDTH,
+    borderRadius: 10,
   },
   horizontalGrayLine: {
-    height: HEIGHT * 0.7,
+    height: HEIGHT * 0.5,
     width: WIDTH * 8,
     backgroundColor: OFF_WHITE,
-    marginHorizontal: WIDTH * 1
+    marginHorizontal: WIDTH,
+    borderRadius: 10,
   },
   newsImageView: {
     height: HEIGHT * 6,
-    width: HEIGHT * 6
+    width: HEIGHT * 6,
   },
   modalView: {
     backgroundColor: 'white',
@@ -178,7 +189,8 @@ const CommonStyles = StyleSheet.create({
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     paddingHorizontal: WIDTH * 5,
-    paddingVertical: HEIGHT * 2
-  }
+    paddingTop: HEIGHT * 3,
+    paddingBottom: HEIGHT * 6,
+  },
 });
 export default CommonStyles;

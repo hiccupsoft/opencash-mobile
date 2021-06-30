@@ -7,9 +7,7 @@ function HeaderLeft({iconName, onPress = () => {}}) {
     <TouchableOpacity
       onPress={onPress}
       style={{
-        borderRadius: 90,
         width: (constants.BaseStyle.DEVICE_WIDTH / 100) * 9,
-        height: (constants.BaseStyle.DEVICE_WIDTH / 100) * 9,
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: (constants.BaseStyle.DEVICE_WIDTH / 100) * 3,

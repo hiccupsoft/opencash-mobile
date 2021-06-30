@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,10 +6,19 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import { BLUE, GRAY, WHITE } from '../constants/Colors';
+import {BLUE, GRAY, WHITE} from '../constants/Colors';
 import constants from '../constants';
-import { account, history, portfolio, historyTabIcon, portfolioSelected, searchTabIcon, searchSelected, historySelected, accountSelected } from '../constants/Images';
-import { ifIphoneX } from 'react-native-iphone-x-helper';
+import {
+  account,
+  history,
+  portfolio,
+  portfolioSelected,
+  search,
+  searchSelected,
+  historySelected,
+  accountSelected,
+} from '../constants/Images';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const tabBarConfig = [
   {
@@ -18,12 +27,12 @@ const tabBarConfig = [
     name: 'DashBoardStack',
   },
   {
-    icon: searchTabIcon,
+    icon: search,
     selectedIcon: searchSelected,
     name: 'SearchStack',
   },
   {
-    icon: historyTabIcon,
+    icon: history,
     selectedIcon: historySelected,
     name: 'HistoryStack',
   },
@@ -35,7 +44,7 @@ const tabBarConfig = [
 ];
 
 function TabBar(props) {
-  const { descriptors, navigation, state } = props;
+  const {descriptors, navigation, state} = props;
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
   if (focusedOptions.tabBarVisible === false) {
@@ -90,8 +99,9 @@ const styles = StyleSheet.create({
   },
   singleTab: {
     width: (constants.BaseStyle.DEVICE_WIDTH / 100) * 25,
+    height: Platform.OS === 'ios' ? ifIphoneX(80, 60) : 60,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   selectedIcon: {
     marginBottom: Platform.OS === 'ios' ? ifIphoneX(30, 10) : 10,

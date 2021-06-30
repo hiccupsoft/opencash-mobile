@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -6,16 +6,16 @@ import {
   ScrollView,
   Platform,
   KeyboardAvoidingView,
-  Image
+  Image,
 } from 'react-native';
 import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
 import CustomText from '../../components/CustomText';
 import TextStyles from '../../styles/TextStyles';
-import { cancel, logoIcon, whiteFlare } from '../../constants/Images';
+import {cancel, logoIcon, whiteFlare} from '../../constants/Images';
 import CustomTextInput from '../../components/CustomTextInput';
 import CheckBox from 'react-native-check-box';
-import { GRAY, BLUE } from '../../constants/Colors';
+import {GRAY, BLUE} from '../../constants/Colors';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import HeaderRight from '../../components/headerRight';
 import HeaderLeft from '../../components/headerLeft';
@@ -28,7 +28,7 @@ const options = {
 
 function SignUpScreen(props) {
   const [isChecked, setIsChecked] = useState(false);
-  const { navigation } = props
+  const {navigation} = props;
 
   // useLayoutEffect(() => {
   //   navigation.setOptions({
@@ -44,7 +44,7 @@ function SignUpScreen(props) {
     <View style={AuthStyles.authContainer}>
       <View style={AuthStyles.headerLoginView}>
         <HeaderLeft iconName={cancel} onPress={() => navigation.goBack()} />
-        <HeaderTitle iconName={whiteFlare} />
+        <HeaderTitle iconName={logoIcon} />
         <HeaderRight />
       </View>
       <ScrollView keyboardDismissMode={'on-drag'}>
@@ -91,9 +91,8 @@ function SignUpScreen(props) {
           </View>
         </View>
       </ScrollView>
-      {Platform.OS === 'ios' ?
-        <KeyboardAvoidingView
-          behavior={'position'}>
+      {Platform.OS === 'ios' ? (
+        <KeyboardAvoidingView behavior={'position'}>
           <TouchableOpacity
             style={AuthStyles.bottomJoinView}
             activeOpacity={0.8}
@@ -104,7 +103,7 @@ function SignUpScreen(props) {
             <CustomText text={'Sign up'} style={TextStyles.textBold16White} />
           </TouchableOpacity>
         </KeyboardAvoidingView>
-        :
+      ) : (
         <TouchableOpacity
           style={AuthStyles.bottomJoinView}
           activeOpacity={0.8}
@@ -114,7 +113,7 @@ function SignUpScreen(props) {
           ]}>
           <CustomText text={'Sign up'} style={TextStyles.textBold16White} />
         </TouchableOpacity>
-      }
+      )}
     </View>
   );
 }
