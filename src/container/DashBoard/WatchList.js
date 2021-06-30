@@ -1,9 +1,16 @@
-import React from 'react';
-import {View, Image, ScrollView, FlatList} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Image,
+  ScrollView,
+  FlatList,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import CustomText from '../../components/CustomText';
 import SpaceStyles from '../../styles/SpaceStyles';
 import TextStyles from '../../styles/TextStyles';
-import {cart} from '../../constants/Images';
+import {number, cart, percentage} from '../../constants/Images';
 import CommonStyles from '../../styles/CommonStyles';
 import {
   Chart,
@@ -11,9 +18,20 @@ import {
   HorizontalAxis,
   Line,
 } from 'react-native-responsive-linechart';
+import {RED, GREEN} from '../../constants/Colors';
+import Modal from 'react-native-modal';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 const data = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
+
 function WatchList() {
+  const [displayDataModal, setDisplayDataModal] = useState(false);
+
   const renderWatchlist = ({item, index}) => {
     return (
       <>
@@ -35,20 +53,91 @@ function WatchList() {
               style={TextStyles.textMedium14}
             />
           </View>
-          <View style={CommonStyles.watchlistPriceView}>
-            <CustomText
-              text={'123.50'}
-              style={TextStyles.textSemiBold14White}
+          <Chart
+            style={CommonStyles.sparkChartView}
+            data={[
+              {x: 0, y: 0},
+              {x: 1, y: 3},
+              {x: 2, y: 1},
+              {x: 3, y: 2},
+              {x: 4, y: 2},
+              {x: 5, y: 2},
+              {x: 6, y: 6},
+            ]}
+            padding={{bottom: 0, right: 0, top: 0, left: 0}}>
+            <Line
+              smoothing="bezier"
+              tension={0.4}
+              theme={{stroke: {color: GREEN, width: 1.5}}}
             />
-          </View>
+          </Chart>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => [
+              setDisplayDataModal(true),
+              ReactNativeHapticFeedback.trigger('selection', options),
+            ]}>
+            <View style={CommonStyles.watchlistPriceView}>
+              <CustomText
+                text={'123.50'}
+                style={TextStyles.textSemiBold15White}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
         <View style={CommonStyles.lineView} />
+
+        <Modal
+          isVisible={displayDataModal}
+          onBackdropPress={() => setDisplayDataModal(false)}
+          onBackButtonPress={() => setDisplayDataModal(false)}
+          onSwipeComplete={() => setDisplayDataModal(false)}
+          animationIn={'slideInUp'}
+          animationOut={'slideOutDown'}
+          swipeDirection="down"
+          style={{margin: 0}}>
+          <View style={CommonStyles.modalView}>
+            <CustomText
+              text={'Display Data'}
+              style={[TextStyles.textBold18DarkBlack, {textAlign: 'center'}]}
+            />
+            <View style={CommonStyles.lineView} />
+            <View
+              style={[
+                SpaceStyles.top2,
+                SpaceStyles.row,
+                {alignItems: 'center'},
+              ]}>
+              <Image source={number} resizeMode="contain" />
+              <View style={SpaceStyles.left3}>
+                <CustomText
+                  text={'Last Price'}
+                  style={[TextStyles.textBold16Black]}
+                />
+              </View>
+            </View>
+            <View
+              style={[
+                SpaceStyles.top3,
+                SpaceStyles.row,
+                {alignItems: 'center'},
+              ]}>
+              <Image source={percentage} resizeMode="contain" />
+              <View style={SpaceStyles.left3}>
+                <CustomText
+                  text={'Percent Change'}
+                  style={[TextStyles.textBold16Black]}
+                />
+              </View>
+            </View>
+          </View>
+        </Modal>
       </>
     );
   };
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={SpaceStyles.spaceHorizontal}>
+      <View style={[SpaceStyles.spaceHorizontal, SpaceStyles.top1]}>
         <CustomText text={'4 items'} style={TextStyles.textMedium16DarkBlack} />
         <View style={[SpaceStyles.alignSpaceBlock, SpaceStyles.spaceVertical]}>
           <View style={SpaceStyles.coloumnView}>

@@ -79,10 +79,10 @@ const CommonStyles = StyleSheet.create({
   },
   watchlistPriceView: {
     backgroundColor: GREEN,
-    borderRadius: 4,
+    borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: HEIGHT * 0.7,
+    paddingVertical: HEIGHT * 0.8,
     width: WIDTH * 20,
   },
   verticalView: {
@@ -162,6 +162,10 @@ const CommonStyles = StyleSheet.create({
     height: HEIGHT * 25,
     width: WIDTH * 90,
     marginTop: HEIGHT * 3,
+  },
+  sparkChartView: {
+    height: HEIGHT * 4,
+    width: WIDTH * 15,
   },
   horizontalBlueLine: {
     height: HEIGHT * 0.5,

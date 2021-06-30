@@ -34,6 +34,8 @@ module.exports = {
   profilePicture: require('./../assets/profilePicture.png'),
   plus: require('./../assets/plus.png'),
   minusIcon: require('./../assets/minusIcon.png'),
+  percentage: require('./../assets/percentage.png'),
+  number: require('./../assets/number.png'),
   convert: require('./../assets/convert.png'),
   average: require('./../assets/average.png'),
   calendar: require('./../assets/calendar.png'),

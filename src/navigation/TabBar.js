@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: WHITE,
-    paddingHorizontal: (constants.BaseStyle.DEVICE_WIDTH / 100) * 2,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: 'rgba(0, 0, 0, 0.25)',
   },
