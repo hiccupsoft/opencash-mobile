@@ -1,4 +1,4 @@
-import {Platform, StyleSheet} from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import constants from '../constants';
 import {
   BLUE,
@@ -11,7 +11,7 @@ import {
   WHITE,
   OFF_WHITE,
 } from './../constants/Colors';
-import {ifIphoneX} from 'react-native-iphone-x-helper';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -189,8 +189,16 @@ const CommonStyles = StyleSheet.create({
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     paddingHorizontal: WIDTH * 5,
-    paddingTop: HEIGHT * 3,
+    paddingTop: HEIGHT * 1,
     paddingBottom: HEIGHT * 6,
   },
+  modalTopLine: {
+    height: HEIGHT * 0.5,
+    width: WIDTH * 12,
+    backgroundColor: OFF_WHITE,
+    borderRadius: 10,
+    alignSelf: 'center',
+    marginVertical: HEIGHT * 1
+  }
 });
 export default CommonStyles;

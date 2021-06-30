@@ -1,553 +1,329 @@
-import React, {useState, useLayoutEffect} from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import {
-  View,
-  TouchableOpacity,
-  Image,
-  Text,
-  FlatList,
-  ScrollView,
+    View,
+    TouchableOpacity,
+    Image,
+    Text,
+    FlatList,
+    ScrollView,
 } from 'react-native';
 import CustomText from '../../components/CustomText';
 import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
 import TextStyles from '../../styles/TextStyles';
 import {
-  average,
-  calendar,
-  convert,
-  minusIcon,
-  plus,
-  refreshIcon,
-  back,
-  starIcon,
-  downArrowRed,
-  alert,
-  roundEdge,
-  profilePicture,
+    average,
+    calendar,
+    convert,
+    minusIcon,
+    plus,
+    refreshIcon,
+    back,
+    starIcon,
+    downArrowRed,
+    alert,
+    roundEdge,
+    profilePicture,
 } from '../../constants/Images';
 import CommonStyles from '../../styles/CommonStyles';
 import OverView from './OverView';
 import WatchList from './WatchList';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import {Header} from 'react-native-elements';
-import {DARK_BLACK, RED, BLUE, OFF_WHITE} from '../../constants/Colors';
+import { Header } from 'react-native-elements';
+import { DARK_BLACK, RED, BLUE, OFF_WHITE } from '../../constants/Colors';
 import constants from '../../constants';
 import HeaderLeft from '../../components/headerLeft';
 import HeaderRight from '../../components/headerRight';
 import {
-  Chart,
-  VerticalAxis,
-  HorizontalAxis,
-  Line,
+    Chart,
+    VerticalAxis,
+    HorizontalAxis,
+    Line,
 } from 'react-native-responsive-linechart';
 import Modal from 'react-native-modal';
+import DetailsTab from '../../components/StockPosition/DetailsTab';
+import PositionTab from '../../components/StockPosition/PositionTab';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
 
 const options = {
-  enableVibrateFallback: true,
-  ignoreAndroidSystemSettings: false,
+    enableVibrateFallback: true,
+    ignoreAndroidSystemSettings: false,
 };
 
 const dayFilterData = [
-  {type: '1D'},
-  {type: '5D'},
-  {type: '1M'},
-  {type: 'YTD'},
-  {type: '1Y'},
-  {type: '2Y'},
-  {type: 'ALL'},
+    { type: '1D' },
+    { type: '5D' },
+    { type: '1M' },
+    { type: 'YTD' },
+    { type: '1Y' },
+    { type: '2Y' },
+    { type: 'ALL' },
 ];
 
 const data = [{}, {}, {}, {}, {}, {}, {}, {}];
 
 function StockPosition(props) {
-  const [isTab, setTab] = useState('overview');
-  const [dayFilter, setDayFilter] = useState('1D');
-  const [screenModule, setScreenModule] = useState('position');
-  const [tradeModal, setTradeModal] = useState(false);
-  const {navigation} = props;
+    const [isTab, setTab] = useState('overview');
+    const [dayFilter, setDayFilter] = useState('1D');
+    const [screenModule, setScreenModule] = useState('position');
+    const [tradeModal, setTradeModal] = useState(false);
+    const { navigation } = props;
+    const tabRef = useRef();
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <HeaderLeft iconName={back} onPress={() => navigation.goBack()} />
-      ),
-      headerRight: () => <HeaderRight iconName={starIcon} />,
-    });
-  }, [navigation]);
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <HeaderLeft iconName={back} onPress={() => navigation.goBack()} />
+            ),
+            headerRight: () => <HeaderRight iconName={starIcon} />,
+        });
+    }, [navigation]);
 
-  const renderDayFilter = ({item, index}) => {
-    return (
-      <View style={CommonStyles.dayBoxView}>
-        <TouchableOpacity
-          style={
-            dayFilter == item.type
-              ? CommonStyles.selectedDayRedBox
-              : CommonStyles.unSelectedDayBox
-          }
-          activeOpacity={1}
-          onPress={() => [
-            setDayFilter(item.type),
-            ReactNativeHapticFeedback.trigger('selection', options),
-          ]}>
-          <CustomText
-            text={item.type}
-            style={
-              dayFilter == item.type
-                ? TextStyles.textSemiBold14Red
-                : TextStyles.textSemiBold14DarkBlack
-            }
-          />
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
-  const renderHistory = ({item, index}) => {
-    return (
-      <View>
-        <View style={SpaceStyles.alignSpaceBlock}>
-          <View>
-            <View style={SpaceStyles.rowFlex}>
-              <Image source={refreshIcon} resizeMode="contain" />
-              <CustomText
-                text={'NFLX Limit Buy'}
-                style={[TextStyles.textMedium16DarkBlack, SpaceStyles.left2]}
-              />
+    const renderDayFilter = ({ item, index }) => {
+        return (
+            <View style={CommonStyles.dayBoxView}>
+                <TouchableOpacity
+                    style={
+                        dayFilter == item.type
+                            ? CommonStyles.selectedDayRedBox
+                            : CommonStyles.unSelectedDayBox
+                    }
+                    activeOpacity={1}
+                    onPress={() => [
+                        setDayFilter(item.type),
+                        ReactNativeHapticFeedback.trigger('selection', options),
+                    ]}>
+                    <CustomText
+                        text={item.type}
+                        style={
+                            dayFilter == item.type
+                                ? TextStyles.textSemiBold14Red
+                                : TextStyles.textSemiBold14DarkBlack
+                        }
+                    />
+                </TouchableOpacity>
             </View>
-            <View style={SpaceStyles.rowFlex}>
-              <CustomText
-                text={'Mar 5, 2020'}
-                style={TextStyles.textMedium14}
-              />
-              <CustomText
-                text={'Canceled'}
-                style={[TextStyles.textBold14, SpaceStyles.left2]}
-              />
+        );
+    };
+
+
+    const TebList = (props) => {
+        return (
+            <View style={SpaceStyles.alignSpaceCenter}>
+                {props.tabs.map((tab, i) => {
+                    return (
+                        <TouchableOpacity
+                            key={i}
+                            onPress={() => { props.goToPage(i) }}
+                            style={props.activeTab === i ? CommonStyles.horizontalBlueLine : CommonStyles.horizontalGrayLine}
+                        >
+                            <CustomText text={tab} />
+                        </TouchableOpacity>
+                    );
+                })}
             </View>
-          </View>
-          <View style={SpaceStyles.rowFlex}>
-            <CustomText text={'-$1,200.45'} style={TextStyles.textSemiBold16} />
-            <Image
-              source={roundEdge}
-              resizeMode="contain"
-              style={SpaceStyles.left5}
-            />
-          </View>
-        </View>
-        <View style={CommonStyles.lineView} />
-      </View>
-    );
-  };
+        )
+    }
 
-  const renderDetails = ({item, index}) => {
     return (
-      <View style={SpaceStyles.right5}>
-        <View style={[SpaceStyles.alignSpaceBlock, {width: WIDTH * 42.5}]}>
-          <CustomText text={'Open'} style={[TextStyles.textMedium16DarkGray]} />
-          <CustomText
-            text={'498.40'}
-            style={[TextStyles.textMedium16DarkBlack]}
-          />
-        </View>
-        <View style={[CommonStyles.lineView]} />
-      </View>
-    );
-  };
+        <View style={AuthStyles.authContainer}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={SpaceStyles.spaceHorizontal}>
+                    <CustomText
+                        text={'Netflix'}
+                        style={[TextStyles.textBold18DarkBlack, { marginTop: 10 }]}
+                    />
+                    <View style={CommonStyles.amountView}>
+                        <CustomText text={'$ 497.89'} style={TextStyles.textBold24} />
+                        <Text>
+                            <CustomText
+                                text={'Bid: '}
+                                style={TextStyles.textMedium14DarkGray}
+                            />
+                            <CustomText
+                                text={'497.40 '}
+                                style={TextStyles.textSemiBold14DarkBlack}
+                            />
+                            <CustomText
+                                text={'Ask: '}
+                                style={TextStyles.textMedium14DarkGray}
+                            />
+                            <CustomText
+                                text={'498'}
+                                style={TextStyles.textSemiBold14DarkBlack}
+                            />
+                        </Text>
+                    </View>
+                    <View style={CommonStyles.amountStatusView}>
+                        <View style={SpaceStyles.rowFlex}>
+                            <Image source={downArrowRed} />
+                            <CustomText
+                                text={'$10.40 (2.45%)'}
+                                style={[TextStyles.textSemiBold14DarkRed, SpaceStyles.left2]}
+                            />
+                        </View>
+                        <Text>
+                            <CustomText text={'Volume: '} style={TextStyles.textMedium14} />
+                            <CustomText
+                                text={'809.7K'}
+                                style={TextStyles.textSemiBold14DarkBlack}
+                            />
+                        </Text>
+                    </View>
 
-  const renderNews = ({}) => {
-    return (
-      <View>
-        <Text>
-          <CustomText
-            text={'CNN '}
-            style={[TextStyles.textBold14DarkBlack]}
-          />
-          <CustomText text={'- May 20'} style={[TextStyles.textMedium14]} />
-        </Text>
-        <View style={SpaceStyles.alignSpaceBlock}>
-          <Text style={[TextStyles.textMedium16DarkBlack, {width: WIDTH * 70}]}>
-            Money lending start taps Visa for Netflix and amezon prime
-          </Text>
-          <Image source={profilePicture} style={CommonStyles.newsImageView} />
-        </View>
-        <View style={[SpaceStyles.top1, SpaceStyles.rowFlex]}>
-          <CustomText
-            text={'NFLX'}
-            style={[TextStyles.textSemiBold14, SpaceStyles.right3]}
-          />
-          <CustomText
-            text={'FB'}
-            style={[TextStyles.textSemiBold14, SpaceStyles.right3]}
-          />
-          <CustomText
-            text={'AMZN'}
-            style={[TextStyles.textSemiBold14, SpaceStyles.right3]}
-          />
-        </View>
-        <View style={CommonStyles.lineView} />
-      </View>
-    );
-  };
+                    <Chart
+                        style={CommonStyles.stockChartView}
+                        data={[
+                            { x: 0, y: 0 },
+                            { x: 1, y: 3 },
+                            { x: 2, y: 1 },
+                            { x: 3, y: 2 },
+                            { x: 4, y: 2 },
+                            { x: 5, y: 2 },
+                            { x: 6, y: 1 },
+                        ]}
+                        padding={{ bottom: 0, right: 0, top: 0, left: 0 }}>
+                        <Line
+                            smoothing="bezier"
+                            tension={0.4}
+                            theme={{ stroke: { color: RED, width: 3 } }}
+                        />
+                    </Chart>
 
-  return (
-    <View style={AuthStyles.authContainer}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={AuthStyles.authContainer}>
-        <View style={SpaceStyles.spaceHorizontal}>
-          <CustomText
-            text={'Netflix'}
-            style={[TextStyles.textBold18DarkBlack, {marginTop: 10}]}
-          />
-          <View style={CommonStyles.amountView}>
-            <CustomText text={'$ 497.89'} style={TextStyles.textBold24} />
-            <Text>
-              <CustomText
-                text={'Bid: '}
-                style={TextStyles.textMedium14DarkGray}
-              />
-              <CustomText
-                text={'497.40 '}
-                style={TextStyles.textSemiBold14DarkBlack}
-              />
-              <CustomText
-                text={'Ask: '}
-                style={TextStyles.textMedium14DarkGray}
-              />
-              <CustomText
-                text={'498'}
-                style={TextStyles.textSemiBold14DarkBlack}
-              />
-            </Text>
-          </View>
-          <View style={CommonStyles.amountStatusView}>
-            <View style={SpaceStyles.rowFlex}>
-              <Image source={downArrowRed} />
-              <CustomText
-                text={'$10.40 (2.45%)'}
-                style={[TextStyles.textSemiBold14DarkRed, SpaceStyles.left2]}
-              />
-            </View>
-            <Text>
-              <CustomText text={'Volume: '} style={TextStyles.textMedium14} />
-              <CustomText
-                text={'809.7K'}
-                style={TextStyles.textSemiBold14DarkBlack}
-              />
-            </Text>
-          </View>
+                    <FlatList
+                        data={dayFilterData}
+                        keyboardShouldPersistTaps="handled"
+                        showsVerticalScrollIndicator={false}
+                        showsHorizontalScrollIndicator={false}
+                        scrollEnabled={false}
+                        horizontal={true}
+                        renderItem={renderDayFilter}
+                        contentContainerStyle={CommonStyles.dayBoxContentView}
+                        style={SpaceStyles.spaceVertical}
+                    />
 
-          <Chart
-            style={CommonStyles.stockChartView}
-            data={[
-              {x: 0, y: 0},
-              {x: 1, y: 3},
-              {x: 2, y: 1},
-              {x: 3, y: 2},
-              {x: 4, y: 2},
-              {x: 5, y: 2},
-              {x: 6, y: 1},
-            ]}
-            padding={{bottom: 0, right: 0, top: 0, left: 0}}>
-            <Line
-              smoothing="bezier"
-              tension={0.4}
-              theme={{stroke: {color: RED, width: 3}}}
-            />
-          </Chart>
-
-          <FlatList
-            data={dayFilterData}
-            keyboardShouldPersistTaps="handled"
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            scrollEnabled={false}
-            horizontal={true}
-            renderItem={renderDayFilter}
-            contentContainerStyle={CommonStyles.dayBoxContentView}
-            style={SpaceStyles.spaceVertical}
-          />
-          <View style={SpaceStyles.alignSpaceCenter}>
-            <TouchableOpacity onPress={() => setScreenModule('position')}>
-              <View
-                style={
-                  screenModule == 'position'
-                    ? CommonStyles.horizontalBlueLine
-                    : CommonStyles.horizontalGrayLine
-                }
-              />
+                </View>
+                <ScrollableTabView
+                    initialPage={0}
+                    ref={tabRef}
+                    renderTabBar={() => <TebList />}
+                >
+                    <DetailsTab />
+                    <PositionTab />
+                </ScrollableTabView>
+                <Modal
+                    isVisible={tradeModal}
+                    onBackdropPress={() => setTradeModal(false)}
+                    onBackButtonPress={() => setTradeModal(false)}
+                    onSwipeComplete={() => setTradeModal(false)}
+                    animationIn={'slideInUp'}
+                    animationOut={'slideOutDown'}
+                    swipeDirection="down"
+                    style={{ margin: 0 }}>
+                    <View style={CommonStyles.modalView}>
+                        <View style={CommonStyles.modalTopLine} />
+                        <View style={[SpaceStyles.top2, SpaceStyles.row]}>
+                            <Image
+                                source={plus}
+                                style={SpaceStyles.top1}
+                                resizeMode="contain"
+                            />
+                            <View style={SpaceStyles.left3}>
+                                <CustomText
+                                    text={'Buy NFLX'}
+                                    style={[TextStyles.textBold16Black]}
+                                />
+                                <CustomText
+                                    text={'Buying Power: $1,000.34'}
+                                    style={[TextStyles.textMedium14]}
+                                />
+                            </View>
+                        </View>
+                        <View style={[SpaceStyles.top3, SpaceStyles.row]}>
+                            <Image
+                                source={minusIcon}
+                                style={SpaceStyles.top1}
+                                resizeMode="contain"
+                            />
+                            <View style={SpaceStyles.left3}>
+                                <CustomText
+                                    text={'Sell NFLX'}
+                                    style={[TextStyles.textBold16Black]}
+                                />
+                                <CustomText
+                                    text={'Day Trading Count: 2'}
+                                    style={[TextStyles.textMedium14]}
+                                />
+                            </View>
+                        </View>
+                        <View style={[SpaceStyles.top3, SpaceStyles.row]}>
+                            <Image
+                                source={convert}
+                                style={SpaceStyles.top1}
+                                resizeMode="contain"
+                            />
+                            <View style={SpaceStyles.left3}>
+                                <CustomText
+                                    text={'Convert'}
+                                    style={[TextStyles.textBold16Black]}
+                                />
+                                <CustomText
+                                    text={'Convert NFLX to another stock'}
+                                    style={[TextStyles.textMedium14]}
+                                />
+                            </View>
+                        </View>
+                        <View style={[SpaceStyles.top3, SpaceStyles.row]}>
+                            <Image
+                                source={average}
+                                style={SpaceStyles.top1}
+                                resizeMode="contain"
+                            />
+                            <View style={SpaceStyles.left3}>
+                                <CustomText
+                                    text={'Dollar Cost Average'}
+                                    style={[TextStyles.textBold16Black]}
+                                />
+                                <CustomText
+                                    text={'Unsure when to buy? Set up recurring buy'}
+                                    style={[TextStyles.textMedium14]}
+                                />
+                            </View>
+                        </View>
+                        <View style={[SpaceStyles.top3, SpaceStyles.row]}>
+                            <Image
+                                source={calendar}
+                                style={SpaceStyles.top1}
+                                resizeMode="contain"
+                            />
+                            <View style={SpaceStyles.left3}>
+                                <CustomText
+                                    text={'Trade NFLX Options'}
+                                    style={[TextStyles.textBold16Black]}
+                                />
+                                <CustomText
+                                    text={'Profit from price movements in any direction'}
+                                    style={[TextStyles.textMedium14]}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                </Modal>
+            </ScrollView>
+            <TouchableOpacity
+                style={AuthStyles.bottomJoinView}
+                activeOpacity={1}
+                onPress={() => [
+                    setTradeModal(true),
+                    ReactNativeHapticFeedback.trigger('impactLight', options),
+                ]}>
+                <CustomText text={'Trade'} style={TextStyles.textBold16White} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => setScreenModule('details')}>
-              <View
-                style={
-                  screenModule == 'details'
-                    ? CommonStyles.horizontalBlueLine
-                    : CommonStyles.horizontalGrayLine
-                }
-              />
-            </TouchableOpacity>
-          </View>
         </View>
-        {screenModule == 'position' && (
-          <View style={SpaceStyles.spaceHorizontal}>
-            <View
-              style={[SpaceStyles.alignSpaceBlock, SpaceStyles.spaceVertical]}>
-              <CustomText
-                text={'Your Position'}
-                style={TextStyles.textBold18DarkBlack}
-              />
-              <View style={CommonStyles.iconRowView}>
-                <Image source={alert} />
-                <View style={CommonStyles.verticalView} />
-                <CustomText
-                  text={'+15%'}
-                  style={[TextStyles.textSemiBold14DarkYellow]}
-                />
-              </View>
-            </View>
-
-            <View style={[SpaceStyles.alignSpaceBlock, SpaceStyles.top1]}>
-              <CustomText
-                text={'Today’s Return'}
-                style={TextStyles.textMedium16DarkGray}
-              />
-              <CustomText
-                text={'-$200.45 (-2.45%)'}
-                style={TextStyles.textMedium16DarkBlack}
-              />
-            </View>
-            <View style={CommonStyles.lineView} />
-            <View style={SpaceStyles.alignSpaceBlock}>
-              <CustomText
-                text={'Total Return'}
-                style={TextStyles.textMedium16DarkGray}
-              />
-              <CustomText
-                text={'-$200.45 (-2.45%)'}
-                style={TextStyles.textMedium16DarkBlack}
-              />
-            </View>
-            <View style={CommonStyles.lineView} />
-
-            <View style={[SpaceStyles.rowFlex, SpaceStyles.vertical1]}>
-              <View style={SpaceStyles.width45}>
-                <CustomText
-                  text={'200'}
-                  style={TextStyles.textMedium16DarkBlack}
-                />
-                <CustomText
-                  text={'Shares'}
-                  style={TextStyles.textMedium16DarkGray}
-                />
-              </View>
-              <View style={SpaceStyles.width45}>
-                <CustomText
-                  text={'$290.45'}
-                  style={TextStyles.textMedium16DarkBlack}
-                />
-                <CustomText
-                  text={'Average Cost'}
-                  style={TextStyles.textMedium16DarkGray}
-                />
-              </View>
-            </View>
-
-            <View style={[SpaceStyles.rowFlex, SpaceStyles.vertical1]}>
-              <View style={SpaceStyles.width45}>
-                <CustomText
-                  text={'$99,578.00'}
-                  style={TextStyles.textMedium16DarkBlack}
-                />
-                <CustomText
-                  text={'Equity'}
-                  style={TextStyles.textMedium16DarkGray}
-                />
-              </View>
-              <View style={SpaceStyles.width45}>
-                <CustomText
-                  text={'102'}
-                  style={TextStyles.textMedium16DarkBlack}
-                />
-                <CustomText
-                  text={'Days Held'}
-                  style={TextStyles.textMedium16DarkGray}
-                />
-              </View>
-            </View>
-
-            <CustomText
-              text={'Activity'}
-              style={[
-                TextStyles.textBold18DarkBlack,
-                SpaceStyles.vertical1,
-                SpaceStyles.top3,
-              ]}
-            />
-            <FlatList
-              data={data}
-              keyboardShouldPersistTaps="handled"
-              showsVerticalScrollIndicator={false}
-              renderItem={renderHistory}
-              style={SpaceStyles.spaceVertical}
-            />
-            <View style={SpaceStyles.top9} />
-          </View>
-        )}
-        {screenModule == 'details' && (
-          <View style={SpaceStyles.spaceHorizontal}>
-            <View
-              style={[SpaceStyles.alignSpaceBlock, SpaceStyles.spaceVertical]}>
-              <CustomText
-                text={'Details'}
-                style={[TextStyles.textBold18DarkBlack]}
-              />
-              <View style={CommonStyles.iconRowView}>
-                <Image source={alert} />
-                <View style={CommonStyles.verticalView} />
-                <CustomText
-                  text={'+15%'}
-                  style={[TextStyles.textSemiBold14DarkYellow]}
-                />
-              </View>
-            </View>
-            <FlatList
-              data={data}
-              keyboardShouldPersistTaps="handled"
-              showsVerticalScrollIndicator={false}
-              numColumns={2}
-              renderItem={renderDetails}
-              style={SpaceStyles.top1}
-            />
-            <CustomText
-              text={'News'}
-              style={[
-                TextStyles.textBold18DarkBlack,
-                SpaceStyles.spaceVertical,
-                SpaceStyles.top3,
-              ]}
-            />
-
-            <FlatList
-              data={data}
-              keyboardShouldPersistTaps="handled"
-              showsVerticalScrollIndicator={false}
-              renderItem={renderNews}
-              style={[SpaceStyles.top2, SpaceStyles.bottom9]}
-            />
-          </View>
-        )}
-        <Modal
-          isVisible={tradeModal}
-          onBackdropPress={() => setTradeModal(false)}
-          onBackButtonPress={() => setTradeModal(false)}
-          onSwipeComplete={() => setTradeModal(false)}
-          animationIn={'slideInUp'}
-          animationOut={'slideOutDown'}
-          swipeDirection="down"
-          style={{margin: 0}}>
-          <View style={CommonStyles.modalView}>
-            <View style={[SpaceStyles.top2, SpaceStyles.row]}>
-              <Image
-                source={plus}
-                style={SpaceStyles.top1}
-                resizeMode="contain"
-              />
-              <View style={SpaceStyles.left3}>
-                <CustomText
-                  text={'Buy NFLX'}
-                  style={[TextStyles.textBold16Black]}
-                />
-                <CustomText
-                  text={'Buying Power: $1,000.34'}
-                  style={[TextStyles.textMedium14]}
-                />
-              </View>
-            </View>
-            <View style={[SpaceStyles.top3, SpaceStyles.row]}>
-              <Image
-                source={minusIcon}
-                style={SpaceStyles.top1}
-                resizeMode="contain"
-              />
-              <View style={SpaceStyles.left3}>
-                <CustomText
-                  text={'Sell NFLX'}
-                  style={[TextStyles.textBold16Black]}
-                />
-                <CustomText
-                  text={'Day Trading Count: 2'}
-                  style={[TextStyles.textMedium14]}
-                />
-              </View>
-            </View>
-            <View style={[SpaceStyles.top3, SpaceStyles.row]}>
-              <Image
-                source={convert}
-                style={SpaceStyles.top1}
-                resizeMode="contain"
-              />
-              <View style={SpaceStyles.left3}>
-                <CustomText
-                  text={'Convert'}
-                  style={[TextStyles.textBold16Black]}
-                />
-                <CustomText
-                  text={'Convert NFLX to another stock'}
-                  style={[TextStyles.textMedium14]}
-                />
-              </View>
-            </View>
-            <View style={[SpaceStyles.top3, SpaceStyles.row]}>
-              <Image
-                source={average}
-                style={SpaceStyles.top1}
-                resizeMode="contain"
-              />
-              <View style={SpaceStyles.left3}>
-                <CustomText
-                  text={'Dollar Cost Average'}
-                  style={[TextStyles.textBold16Black]}
-                />
-                <CustomText
-                  text={'Unsure when to buy? Set up recurring buy'}
-                  style={[TextStyles.textMedium14]}
-                />
-              </View>
-            </View>
-            <View style={[SpaceStyles.top3, SpaceStyles.row]}>
-              <Image
-                source={calendar}
-                style={SpaceStyles.top1}
-                resizeMode="contain"
-              />
-              <View style={SpaceStyles.left3}>
-                <CustomText
-                  text={'Trade NFLX Options'}
-                  style={[TextStyles.textBold16Black]}
-                />
-                <CustomText
-                  text={'Profit from price movements in any direction'}
-                  style={[TextStyles.textMedium14]}
-                />
-              </View>
-            </View>
-          </View>
-        </Modal>
-      </ScrollView>
-      <TouchableOpacity
-        style={AuthStyles.bottomJoinView}
-        activeOpacity={1}
-        onPress={() => [
-          setTradeModal(true),
-          ReactNativeHapticFeedback.trigger('impactLight', options),
-        ]}>
-        <CustomText text={'Trade'} style={TextStyles.textBold16White} />
-      </TouchableOpacity>
-    </View>
-  );
+    );
 }
 
 export default StockPosition;

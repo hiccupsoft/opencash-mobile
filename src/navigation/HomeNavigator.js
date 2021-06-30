@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBar from './TabBar';
 import DashBoardStack from './DashBoardStack';
 import HistoryScreen from '../container/History/HistoryScreen';
 import StockPosition from '../container/DashBoard/StockPosition';
 import HeaderTitleText from '../components/headerTitleText';
+import CryptoPosition from '../container/DashBoard/CryptoPosition';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -29,6 +30,16 @@ function HomeNavigator(props) {
         }}
         name="StockPositionScreen"
         component={StockPosition}
+      />
+      <Stack.Screen
+        options={{
+          headerTitle: () => <HeaderTitleText titleName={'BTC'} />,
+          headerStyle: {
+            shadowColor: 'transparent',
+          },
+        }}
+        name="CryptoPositionScreen"
+        component={CryptoPosition}
       />
     </Stack.Navigator>
   );
