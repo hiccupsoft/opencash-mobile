@@ -41,7 +41,7 @@ const dayFilterData = [
     { type: 'ALL' },
 ];
 
-const data = [{}, {}, {}, {}, {}, {}, {}, {}];
+const data = [{}, {}, {}, {}, {}];
 
 const borrowData = [{}, {}, {}];
 

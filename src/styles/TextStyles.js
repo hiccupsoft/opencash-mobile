@@ -79,6 +79,10 @@ const TextStyles = StyleSheet.create({
     color: GRAY,
     ...constants.Fonts.medium15, //15 medium
   },
+  textMedium15DarkBlack: {
+    color: DARK_BLACK,
+    ...constants.Fonts.medium15, //15 medium
+  },
   textBold14: {
     color: GRAY,
     ...constants.Fonts.bold14, //14 bold
@@ -117,6 +121,10 @@ const TextStyles = StyleSheet.create({
   },
   textMedium14White: {
     color: WHITE,
+    ...constants.Fonts.medium14, //14 medium
+  },
+  textMedium14DarkBlack: {
+    color: DARK_BLACK,
     ...constants.Fonts.medium14, //14 medium
   },
   textMedium14: {

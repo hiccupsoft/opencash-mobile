@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect, useRef} from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -29,8 +29,8 @@ import CommonStyles from '../../styles/CommonStyles';
 import OverView from './OverView';
 import WatchList from './WatchList';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import {Header} from 'react-native-elements';
-import {DARK_BLACK, RED, BLUE, OFF_WHITE} from '../../constants/Colors';
+import { Header } from 'react-native-elements';
+import { DARK_BLACK, RED, BLUE, OFF_WHITE } from '../../constants/Colors';
 import constants from '../../constants';
 import HeaderLeft from '../../components/headerLeft';
 import HeaderRight from '../../components/headerRight';
@@ -44,6 +44,9 @@ import Modal from 'react-native-modal';
 import DetailsTab from '../../components/StockPosition/DetailsTab';
 import PositionTab from '../../components/StockPosition/PositionTab';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+const Tab = createMaterialTopTabNavigator();
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -54,13 +57,13 @@ const options = {
 };
 
 const dayFilterData = [
-  {type: '1D'},
-  {type: '5D'},
-  {type: '1M'},
-  {type: 'YTD'},
-  {type: '1Y'},
-  {type: '2Y'},
-  {type: 'ALL'},
+  { type: '1D' },
+  { type: '5D' },
+  { type: '1M' },
+  { type: 'YTD' },
+  { type: '1Y' },
+  { type: '2Y' },
+  { type: 'ALL' },
 ];
 
 const data = [{}, {}, {}, {}, {}, {}, {}, {}];
@@ -70,7 +73,10 @@ function StockPosition(props) {
   const [dayFilter, setDayFilter] = useState('1D');
   const [screenModule, setScreenModule] = useState('position');
   const [tradeModal, setTradeModal] = useState(false);
-  const {navigation} = props;
+  const { navigation } = props;
+
+  const [activeTab, setActiveTab] = useState('tab1')
+
   const tabRef = useRef();
 
   useLayoutEffect(() => {
@@ -82,7 +88,7 @@ function StockPosition(props) {
     });
   }, [navigation]);
 
-  const renderDayFilter = ({item, index}) => {
+  const renderDayFilter = ({ item, index }) => {
     return (
       <View style={CommonStyles.dayBoxView}>
         <TouchableOpacity
@@ -138,7 +144,7 @@ function StockPosition(props) {
         <View style={SpaceStyles.spaceHorizontal}>
           <CustomText
             text={'Netflix'}
-            style={[TextStyles.textBold18DarkBlack, {marginTop: 10}]}
+            style={[TextStyles.textBold18DarkBlack, { marginTop: 10 }]}
           />
           <View style={CommonStyles.amountView}>
             <CustomText text={'$ 497.89'} style={TextStyles.textBold24} />
@@ -181,19 +187,19 @@ function StockPosition(props) {
           <Chart
             style={CommonStyles.stockChartView}
             data={[
-              {x: 0, y: 0},
-              {x: 1, y: 3},
-              {x: 2, y: 1},
-              {x: 3, y: 2},
-              {x: 4, y: 2},
-              {x: 5, y: 2},
-              {x: 6, y: 1},
+              { x: 0, y: 0 },
+              { x: 1, y: 3 },
+              { x: 2, y: 1 },
+              { x: 3, y: 2 },
+              { x: 4, y: 2 },
+              { x: 5, y: 2 },
+              { x: 6, y: 1 },
             ]}
-            padding={{bottom: 0, right: 0, top: 0, left: 0}}>
+            padding={{ bottom: 0, right: 0, top: 0, left: 0 }}>
             <Line
               smoothing="bezier"
               tension={0.1}
-              theme={{stroke: {color: RED, width: 1.5}}}
+              theme={{ stroke: { color: RED, width: 1.5 } }}
             />
           </Chart>
 
@@ -216,6 +222,14 @@ function StockPosition(props) {
           <PositionTab />
           <DetailsTab />
         </ScrollableTabView>
+
+        {/* <Tab.Navigator
+          tabBarOptions={
+            SpaceStyles.alignSpaceCenter
+          } >
+          <Tab.Screen name="PositionTab" component={PositionTab} />
+          <Tab.Screen name="DetailsTab" component={DetailsTab} />
+        </Tab.Navigator> */}
         <Modal
           isVisible={tradeModal}
           onBackdropPress={() => setTradeModal(false)}
@@ -224,7 +238,7 @@ function StockPosition(props) {
           animationIn={'slideInUp'}
           animationOut={'slideOutDown'}
           swipeDirection="down"
-          style={{margin: 0}}>
+          style={{ margin: 0 }}>
           <View style={CommonStyles.modalView}>
             <View style={CommonStyles.modalTopLine} />
             <View style={[SpaceStyles.top2, SpaceStyles.row]}>

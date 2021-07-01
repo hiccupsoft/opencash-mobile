@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect} from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -26,7 +26,7 @@ import {
   profilePicture,
 } from '../../constants/Images';
 import CommonStyles from '../../styles/CommonStyles';
-import {DARK_BLACK, RED, BLUE, OFF_WHITE} from '../../constants/Colors';
+import { DARK_BLACK, RED, BLUE, OFF_WHITE } from '../../constants/Colors';
 import constants from '../../constants';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
@@ -38,20 +38,20 @@ const options = {
 };
 
 const dayFilterData = [
-  {type: '1D'},
-  {type: '5D'},
-  {type: '1M'},
-  {type: 'YTD'},
-  {type: '1Y'},
-  {type: '2Y'},
-  {type: 'ALL'},
+  { type: '1D' },
+  { type: '5D' },
+  { type: '1M' },
+  { type: 'YTD' },
+  { type: '1Y' },
+  { type: '2Y' },
+  { type: 'ALL' },
 ];
 
-const data = [{}, {}, {}, {}, {}, {}, {}, {}];
+const data = [{}, {}, {}, {}];
 
 const borrowData = [{}, {}, {}];
 
-const renderHistory = ({item, index}) => {
+const renderHistory = ({ item, index }) => {
   return (
     <View>
       <View style={SpaceStyles.alignSpaceBlock}>

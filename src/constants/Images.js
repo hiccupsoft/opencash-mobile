@@ -41,4 +41,8 @@ module.exports = {
   calendar: require('./../assets/calendar.png'),
   hedge: require('./../assets/hedge.png'),
   blast: require('./../assets/blast.png'),
+  receive: require('./../assets/receive.png'),
+  send: require('./../assets/send.png'),
+  rightArrow: require('./../assets/rightArrow.png'),
+  marketOrderIcon: require('./../assets/marketOrderIcon.png'),
 };

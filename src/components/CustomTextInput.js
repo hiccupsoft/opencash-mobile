@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, TextInput} from 'react-native';
-import {GRAY, LIGHT_GRAY, BLUE} from '../constants/Colors';
+import { View, TextInput } from 'react-native';
+import { GRAY, LIGHT_GRAY, BLUE } from '../constants/Colors';
 import AuthStyles from '../styles/AuthStyles';
 
 const CustomTextInput = ({

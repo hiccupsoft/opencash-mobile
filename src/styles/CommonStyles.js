@@ -1,4 +1,4 @@
-import {Platform, StyleSheet} from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import constants from '../constants';
 import {
   BLUE,
@@ -11,7 +11,7 @@ import {
   WHITE,
   OFF_WHITE,
 } from './../constants/Colors';
-import {ifIphoneX} from 'react-native-iphone-x-helper';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -204,5 +204,32 @@ const CommonStyles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: HEIGHT,
   },
+
+  // buy BTC
+  bottomBuyButton: {
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: BLUE,
+    width: WIDTH * 100,
+    height: HEIGHT * 9,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  byuBtcInput: {
+    // borderRadius: 4,
+    borderWidth: 1,
+    borderColor: WHITE,
+    height: HEIGHT * 3,
+    paddingHorizontal: WIDTH * 0,
+    // marginTop: HEIGHT * 2,
+    flexDirection: 'row-reverse',
+    alignItems: 'flex-start',
+    // width: WIDTH * 30,
+    width: WIDTH * 20,
+  },
+  btcTextInput: {
+    width: WIDTH * 20,
+  }
 });
 export default CommonStyles;
