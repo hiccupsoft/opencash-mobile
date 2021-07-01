@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import constants from '../constants';
 import {
   BLUE,
@@ -11,7 +11,7 @@ import {
   WHITE,
   OFF_WHITE,
 } from './../constants/Colors';
-import { ifIphoneX } from 'react-native-iphone-x-helper';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -159,8 +159,8 @@ const CommonStyles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   stockChartView: {
-    height: HEIGHT * 25,
-    width: WIDTH * 90,
+    height: HEIGHT * 35,
+    width: '100%',
     marginTop: HEIGHT * 3,
   },
   sparkChartView: {
@@ -170,7 +170,7 @@ const CommonStyles = StyleSheet.create({
   horizontalBlueLine: {
     height: HEIGHT * 0.5,
     width: WIDTH * 8,
-    backgroundColor: BLUE,
+    backgroundColor: RED,
     marginHorizontal: WIDTH,
     borderRadius: 10,
   },
@@ -202,7 +202,7 @@ const CommonStyles = StyleSheet.create({
     backgroundColor: OFF_WHITE,
     borderRadius: 10,
     alignSelf: 'center',
-    marginVertical: HEIGHT * 1
-  }
+    marginVertical: HEIGHT,
+  },
 });
 export default CommonStyles;

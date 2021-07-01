@@ -4,7 +4,7 @@ const Colors = {
   GRAY: 'rgb(142, 142, 147)',
   DARK_BLACK: 'rgb(14, 20, 30)',
   BLUE: 'rgb(64, 100, 253)',
-  LIGHT_GRAY: 'rgb(231, 231, 231)',
+  LIGHT_GRAY: '#EDEDED',
   BORDER: 'rgba(60, 60, 67, 0.36)',
   GREEN: 'rgb(0, 171, 89)',
   RED: 'rgb(252, 62, 48)',
@@ -14,7 +14,7 @@ const Colors = {
   PURPLE: 'rgb(175, 82, 222)',
   DARK_RED: 'rgb(252, 62, 48)',
   DARK_GRAY: 'rgb(153, 153, 153)',
-  OFF_WHITE: "rgba(116, 116, 128, 0.18)",
-  DARK_YELLOW: "rgb(211, 159, 73)"
+  OFF_WHITE: 'rgba(116, 116, 128, 0.18)',
+  DARK_YELLOW: 'rgb(211, 159, 73)',
 };
 module.exports = Colors;

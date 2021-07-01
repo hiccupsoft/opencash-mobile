@@ -6,7 +6,7 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import {BLUE, GRAY, WHITE} from '../constants/Colors';
+import {BLUE, GRAY, WHITE, LIGHT_GRAY} from '../constants/Colors';
 import constants from '../constants';
 import {
   account,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: WHITE,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: 'rgba(0, 0, 0, 0.25)',
+    borderTopColor: 'rgba(0, 0, 0, 0.20)',
   },
   singleTab: {
     width: (constants.BaseStyle.DEVICE_WIDTH / 100) * 25,

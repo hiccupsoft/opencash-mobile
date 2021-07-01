@@ -97,9 +97,13 @@ function WatchList() {
           swipeDirection="down"
           style={{margin: 0}}>
           <View style={CommonStyles.modalView}>
+            <View style={CommonStyles.modalTopLine} />
             <CustomText
               text={'Display Data'}
-              style={[TextStyles.textBold18DarkBlack, {textAlign: 'center'}]}
+              style={[
+                TextStyles.textBold18DarkBlack,
+                {textAlign: 'left', marginTop: 10},
+              ]}
             />
             <View style={CommonStyles.lineView} />
             <View

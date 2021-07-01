@@ -1,6 +1,6 @@
 import {Platform, StyleSheet} from 'react-native';
 import constants from '../constants';
-import {BLUE, LIGHT_GRAY, WHITE, GRAY, DARK_BLACK} from '../constants/Colors';
+import {BLUE, LIGHT_GRAY, WHITE, GRAY, DARK_BLACK, GREEN, RED} from '../constants/Colors';
 import {ifIphoneX} from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
@@ -41,6 +41,24 @@ const AuthStyles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     backgroundColor: BLUE,
+    width: WIDTH * 100,
+    height: HEIGHT * 9,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomGreenView: {
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: GREEN,
+    width: WIDTH * 100,
+    height: HEIGHT * 9,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomRedView: {
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: RED,
     width: WIDTH * 100,
     height: HEIGHT * 9,
     alignItems: 'center',
