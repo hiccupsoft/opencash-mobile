@@ -16,5 +16,6 @@ const Colors = {
   DARK_GRAY: 'rgb(153, 153, 153)',
   OFF_WHITE: 'rgba(116, 116, 128, 0.18)',
   DARK_YELLOW: 'rgb(211, 159, 73)',
+  FILTER_BORDER: 'rgb(231, 231, 231)'
 };
 module.exports = Colors;

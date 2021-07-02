@@ -10,6 +10,7 @@ import {
   ORANGE,
   WHITE,
   OFF_WHITE,
+  FILTER_BORDER
 } from './../constants/Colors';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 
@@ -228,12 +229,31 @@ const CommonStyles = StyleSheet.create({
   },
 
   // Order status
+
   viewOrderText: {
     position: 'absolute',
     bottom: HEIGHT * 11,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     alignSelf: 'center'
+  },
+
+  // History screen
+
+  historyFilterContainer: {
+    paddingVertical: HEIGHT * 0.5,
+    paddingHorizontal: WIDTH * 4,
+    borderRadius: 20,
+    marginRight: WIDTH * 2,
+    borderWidth: 1,
+    borderColor: FILTER_BORDER
+  },
+  selectedHistoryFilterContainer: {
+    paddingVertical: HEIGHT * 0.5,
+    paddingHorizontal: WIDTH * 4,
+    borderRadius: 20,
+    marginRight: WIDTH * 2,
+    backgroundColor: FILTER_BORDER,
+    borderWidth: 1,
+    borderColor: FILTER_BORDER
   }
 });
 export default CommonStyles;
