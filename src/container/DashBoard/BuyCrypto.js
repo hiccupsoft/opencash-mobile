@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image, TextInput } from 'react-native';
 import CustomText from '../../components/CustomText';
 import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
@@ -10,7 +10,7 @@ import OverView from './OverView';
 import WatchList from './WatchList';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { Header } from 'react-native-elements';
-import { DARK_BLACK } from '../../constants/Colors';
+import { DARK_BLACK, BLUE, GRAY } from '../../constants/Colors';
 import constants from '../../constants';
 import HeaderLeft from '../../components/headerLeft';
 import HeaderRight from '../../components/headerRight';
@@ -50,7 +50,16 @@ function BuyCrypto(props) {
             text={'Quantity'}
             style={TextStyles.textMedium16DarkGray}
           />
-          <CustomText text={'5'} style={TextStyles.textBold16DarkBlack} />
+          {/* <CustomText text={'5'} style={TextStyles.textBold16DarkBlack} /> */}
+          <TextInput
+            placeholder={'0'}
+            keyboardAppearance={'dark'}
+            keyboardType={'number-pad'}
+            placeholderTextColor={GRAY}
+            style={TextStyles.textBold16Black}
+            textAlign={'right'}
+            selectionColor={BLUE}
+          />
         </View>
         <View style={CommonStyles.lineView} />
         <View style={[SpaceStyles.alignSpaceBlock]}>

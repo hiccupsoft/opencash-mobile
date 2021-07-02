@@ -65,6 +65,7 @@ function OrderStatus(props) {
                 style={CommonStyles.bottomBuyButton}
                 activeOpacity={1}
                 onPress={() => [
+                    navigation.goBack(),
                     ReactNativeHapticFeedback.trigger('impactLight', options),
                 ]}>
                 <CustomText text={'Done'} style={TextStyles.textBold16White} />
