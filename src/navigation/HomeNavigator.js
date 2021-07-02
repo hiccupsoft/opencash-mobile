@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBar from './TabBar';
 import DashBoardStack from './DashBoardStack';
 import HistoryScreen from '../container/History/HistoryScreen';
@@ -9,6 +9,7 @@ import HeaderTitleText from '../components/headerTitleText';
 import CryptoPosition from '../container/DashBoard/CryptoPosition';
 import BuyCrypto from '../container/DashBoard/BuyCrypto';
 import SellCrypto from '../container/DashBoard/SellCrypto';
+import OrderStatus from '../container/DashBoard/OrderStatus';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,6 +61,14 @@ function HomeNavigator(props) {
         }}
         name="SellCryptoScreen"
         component={SellCrypto}
+      />
+      <Stack.Screen
+        options={{
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+          headerShown: false,
+        }}
+        name="OrderStatusScreen"
+        component={OrderStatus}
       />
     </Stack.Navigator>
   );

@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect} from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -25,7 +25,7 @@ import {
 } from '../../constants/Images';
 import CommonStyles from '../../styles/CommonStyles';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import {DARK_BLACK, GRAY, BLUE} from '../../constants/Colors';
+import { DARK_BLACK, GRAY, BLUE } from '../../constants/Colors';
 import constants from '../../constants';
 import HeaderLeft from '../../components/headerLeft';
 import HeaderRight from '../../components/headerRight';
@@ -37,7 +37,7 @@ const options = {
   ignoreAndroidSystemSettings: false,
 };
 
-const DismissKeyboard = ({children}) => (
+const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
     {children}
   </TouchableWithoutFeedback>
@@ -47,7 +47,9 @@ function SellCrypto(props) {
   const [limitModal, setLimitModal] = useState(false);
   const [orderType, setOrderType] = useState('Market Price');
 
-  const {navigation} = props;
+  const ref = useRef()
+
+  const { navigation } = props;
 
   return (
     <DismissKeyboard>
@@ -119,7 +121,7 @@ function SellCrypto(props) {
             animationIn={'slideInUp'}
             animationOut={'slideOutDown'}
             swipeDirection="down"
-            style={{margin: 0}}>
+            style={{ margin: 0 }}>
             <View style={CommonStyles.modalView}>
               <View style={CommonStyles.modalTopLine} />
               <CustomText

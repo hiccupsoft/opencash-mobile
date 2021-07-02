@@ -1,4 +1,4 @@
-import {Platform, StyleSheet} from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import constants from '../constants';
 import {
   BLUE,
@@ -11,7 +11,7 @@ import {
   WHITE,
   OFF_WHITE,
 } from './../constants/Colors';
-import {ifIphoneX} from 'react-native-iphone-x-helper';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const HEIGHT = constants.BaseStyle.DEVICE_HEIGHT / 100;
 const WIDTH = constants.BaseStyle.DEVICE_WIDTH / 100;
@@ -226,5 +226,14 @@ const CommonStyles = StyleSheet.create({
   textInput: {
     width: WIDTH * 20,
   },
+
+  // Order status
+  viewOrderText: {
+    position: 'absolute',
+    bottom: HEIGHT * 11,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    alignSelf: 'center'
+  }
 });
 export default CommonStyles;

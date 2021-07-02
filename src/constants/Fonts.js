@@ -13,6 +13,10 @@ const Fonts = {
     fontSize: 18,
     fontFamily: 'Manrope-Bold',
   },
+  semiBold18: {
+    fontSize: 18,
+    fontFamily: 'Manrope-SemiBold',
+  },
   bold20: {
     fontSize: 20,
     fontFamily: 'Manrope-Bold',

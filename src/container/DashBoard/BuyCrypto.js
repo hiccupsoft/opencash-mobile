@@ -1,16 +1,16 @@
-import React, {useState, useLayoutEffect} from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
+import React, { useState, useLayoutEffect } from 'react';
+import { View, TouchableOpacity, Image } from 'react-native';
 import CustomText from '../../components/CustomText';
 import AuthStyles from '../../styles/AuthStyles';
 import SpaceStyles from '../../styles/SpaceStyles';
 import TextStyles from '../../styles/TextStyles';
-import {overview, star, summary, back} from '../../constants/Images';
+import { overview, star, summary, back } from '../../constants/Images';
 import CommonStyles from '../../styles/CommonStyles';
 import OverView from './OverView';
 import WatchList from './WatchList';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import {Header} from 'react-native-elements';
-import {DARK_BLACK} from '../../constants/Colors';
+import { Header } from 'react-native-elements';
+import { DARK_BLACK } from '../../constants/Colors';
 import constants from '../../constants';
 import HeaderLeft from '../../components/headerLeft';
 import HeaderRight from '../../components/headerRight';
@@ -25,7 +25,7 @@ const data = [{}, {}, {}, {}, {}];
 
 function BuyCrypto(props) {
   const [isTab, setTab] = useState('overview');
-  const {navigation} = props;
+  const { navigation } = props;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -90,7 +90,7 @@ function BuyCrypto(props) {
         style={CommonStyles.bottomBuyButton}
         activeOpacity={1}
         onPress={() => [
-          // setTradeModal(true),
+          navigation.navigate('OrderStatusScreen'),
           ReactNativeHapticFeedback.trigger('impactLight', options),
         ]}>
         <CustomText text={'Buy BTC'} style={TextStyles.textBold16White} />

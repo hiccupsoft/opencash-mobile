@@ -75,7 +75,8 @@ function StockPosition(props) {
   const [tradeModal, setTradeModal] = useState(false);
   const { navigation } = props;
 
-  const [activeTab, setActiveTab] = useState('tab1')
+  const [firstTabSwitch, setFirstTabSwitch] = useState(true)
+  const [tabViewStyle, setTabViewStyle] = useState({ backgroundColor: 'transparent' })
 
   const tabRef = useRef();
 
@@ -87,6 +88,18 @@ function StockPosition(props) {
       headerRight: () => <HeaderRight iconName={starIcon} />,
     });
   }, [navigation]);
+
+  // const _handleTabHeight = (obj) => {
+  //   tabRef[tabRef.props.tabLabel].measure(_setTabHeight())
+  // }
+
+  // const _setTabHeight = (ox, oy, width, height, px, py) => {
+  //   if (!firstTabSwitch) {
+  //     setTabViewStyle({ height: height })
+  //   } else {
+  //     setTabViewStyle(false)
+  //   }
+  // }
 
   const renderDayFilter = ({ item, index }) => {
     return (
@@ -217,7 +230,7 @@ function StockPosition(props) {
         </View>
         <ScrollableTabView
           initialPage={0}
-          ref={tabRef}
+          prerenderingSiblingsNumber={0}
           renderTabBar={() => <TebList />}>
           <PositionTab />
           <DetailsTab />
@@ -230,6 +243,7 @@ function StockPosition(props) {
           <Tab.Screen name="PositionTab" component={PositionTab} />
           <Tab.Screen name="DetailsTab" component={DetailsTab} />
         </Tab.Navigator> */}
+
         <Modal
           isVisible={tradeModal}
           onBackdropPress={() => setTradeModal(false)}
