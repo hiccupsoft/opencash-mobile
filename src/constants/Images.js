@@ -46,4 +46,7 @@ module.exports = {
   rightArrow: require('./../assets/rightArrow.png'),
   marketOrderIcon: require('./../assets/marketOrderIcon.png'),
   limitOrderIcon: require('./../assets/limitOrder.png'),
+  refreshBig: require('./../assets/refreshBig.png'),
+  updateIcon: require('./../assets/updateIcon.png'),
+  cancelIcon: require('./../assets/cancelIcon.png'),
 };
