@@ -45,4 +45,5 @@ module.exports = {
   send: require('./../assets/send.png'),
   rightArrow: require('./../assets/rightArrow.png'),
   marketOrderIcon: require('./../assets/marketOrderIcon.png'),
+  limitOrderIcon: require('./../assets/limitOrder.png'),
 };

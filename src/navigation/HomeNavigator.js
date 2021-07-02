@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBar from './TabBar';
 import DashBoardStack from './DashBoardStack';
 import HistoryScreen from '../container/History/HistoryScreen';
@@ -50,13 +50,17 @@ function HomeNavigator(props) {
             shadowColor: 'transparent',
           },
         }}
-        name="BuyCryptoScreen" component={BuyCrypto} />
+        name="BuyCryptoScreen"
+        component={BuyCrypto}
+      />
       <Stack.Screen
         options={{
           ...TransitionPresets.ModalSlideFromBottomIOS,
-          headerShown: false
+          headerShown: false,
         }}
-        name="SellCryptoScreen" component={SellCrypto} />
+        name="SellCryptoScreen"
+        component={SellCrypto}
+      />
     </Stack.Navigator>
   );
 }

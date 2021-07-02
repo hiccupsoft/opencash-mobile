@@ -151,7 +151,7 @@ function StockPosition(props) {
             <Text>
               <CustomText
                 text={'Bid: '}
-                style={TextStyles.textMedium14DarkGray}
+                style={TextStyles.textMedium15DarkGray}
               />
               <CustomText
                 text={'497.40 '}
@@ -159,7 +159,7 @@ function StockPosition(props) {
               />
               <CustomText
                 text={'Ask: '}
-                style={TextStyles.textMedium14DarkGray}
+                style={TextStyles.textMedium15DarkGray}
               />
               <CustomText
                 text={'498'}
@@ -176,7 +176,7 @@ function StockPosition(props) {
               />
             </View>
             <Text>
-              <CustomText text={'Volume: '} style={TextStyles.textMedium14} />
+              <CustomText text={'Volume: '} style={TextStyles.textMedium15} />
               <CustomText
                 text={'809.7K'}
                 style={TextStyles.textSemiBold14DarkBlack}
@@ -254,7 +254,7 @@ function StockPosition(props) {
                 />
                 <CustomText
                   text={'Buying Power: $1,000.34'}
-                  style={[TextStyles.textMedium14]}
+                  style={[TextStyles.textMedium15]}
                 />
               </View>
             </View>
@@ -271,7 +271,7 @@ function StockPosition(props) {
                 />
                 <CustomText
                   text={'Day Trading Count: 2'}
-                  style={[TextStyles.textMedium14]}
+                  style={[TextStyles.textMedium15]}
                 />
               </View>
             </View>
@@ -288,7 +288,7 @@ function StockPosition(props) {
                 />
                 <CustomText
                   text={'Convert NFLX to another stock'}
-                  style={[TextStyles.textMedium14]}
+                  style={[TextStyles.textMedium15]}
                 />
               </View>
             </View>
@@ -305,7 +305,7 @@ function StockPosition(props) {
                 />
                 <CustomText
                   text={'Unsure when to buy? Set up recurring buy'}
-                  style={[TextStyles.textMedium14]}
+                  style={[TextStyles.textMedium15]}
                 />
               </View>
             </View>
@@ -322,7 +322,7 @@ function StockPosition(props) {
                 />
                 <CustomText
                   text={'Profit from price movements in any direction'}
-                  style={[TextStyles.textMedium14]}
+                  style={[TextStyles.textMedium15]}
                 />
               </View>
             </View>

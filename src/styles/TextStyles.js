@@ -59,6 +59,10 @@ const TextStyles = StyleSheet.create({
     color: DARK_BLACK,
     ...constants.Fonts.medium16, //16 medium
   },
+  textBold16DarkBlack: {
+    color: DARK_BLACK,
+    ...constants.Fonts.bold16, //16 medium
+  },
   textSemiBold15DarkBlack: {
     color: DARK_BLACK,
     ...constants.Fonts.semiBold15, //14 semibold

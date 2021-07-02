@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -27,14 +27,14 @@ import {
   profilePicture,
   receive,
   send,
-  borrow
+  borrow,
 } from '../../constants/Images';
 import CommonStyles from '../../styles/CommonStyles';
 import OverView from './OverView';
 import WatchList from './WatchList';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
-import { Header } from 'react-native-elements';
-import { GREEN, RED } from '../../constants/Colors';
+import {Header} from 'react-native-elements';
+import {GREEN, RED} from '../../constants/Colors';
 import constants from '../../constants';
 import HeaderLeft from '../../components/headerLeft';
 import HeaderRight from '../../components/headerRight';
@@ -55,13 +55,13 @@ const options = {
 };
 
 const dayFilterData = [
-  { type: '1D' },
-  { type: '5D' },
-  { type: '1M' },
-  { type: 'YTD' },
-  { type: '1Y' },
-  { type: '2Y' },
-  { type: 'ALL' },
+  {type: '1D'},
+  {type: '5D'},
+  {type: '1M'},
+  {type: 'YTD'},
+  {type: '1Y'},
+  {type: '2Y'},
+  {type: 'ALL'},
 ];
 
 const data = [{}, {}, {}, {}, {}, {}, {}, {}];
@@ -73,7 +73,7 @@ function CryptoPosition(props) {
   const [dayFilter, setDayFilter] = useState('1D');
   const [screenModule, setScreenModule] = useState('position');
   const [tradeModal, setTradeModal] = useState(false);
-  const { navigation } = props;
+  const {navigation} = props;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -84,7 +84,7 @@ function CryptoPosition(props) {
     });
   }, [navigation]);
 
-  const renderDayFilter = ({ item, index }) => {
+  const renderDayFilter = ({item, index}) => {
     return (
       <View style={CommonStyles.dayBoxView}>
         <TouchableOpacity
@@ -111,7 +111,7 @@ function CryptoPosition(props) {
     );
   };
 
-  const renderHistory = ({ item, index }) => {
+  const renderHistory = ({item, index}) => {
     return (
       <View>
         <View style={SpaceStyles.alignSpaceBlock}>
@@ -126,7 +126,7 @@ function CryptoPosition(props) {
             <View style={SpaceStyles.rowFlex}>
               <CustomText
                 text={'Mar 5, 2020'}
-                style={TextStyles.textMedium14}
+                style={TextStyles.textMedium15}
               />
               <CustomText
                 text={'Canceled'}
@@ -148,7 +148,7 @@ function CryptoPosition(props) {
     );
   };
 
-  const renderBorrow = ({ }) => {
+  const renderBorrow = ({}) => {
     return (
       <View>
         <View style={SpaceStyles.alignSpaceBlock}>
@@ -171,7 +171,7 @@ function CryptoPosition(props) {
         <View style={SpaceStyles.spaceHorizontal}>
           <CustomText
             text={'Bitcoin'}
-            style={[TextStyles.textBold18DarkBlack, { marginTop: 10 }]}
+            style={[TextStyles.textBold18DarkBlack, {marginTop: 10}]}
           />
           <CustomText text={'$35,729.77'} style={TextStyles.textBold24} />
           <View style={[SpaceStyles.rowFlex, SpaceStyles.vertical1]}>
@@ -185,19 +185,19 @@ function CryptoPosition(props) {
             <Chart
               style={CommonStyles.stockChartView}
               data={[
-                { x: 0, y: 0 },
-                { x: 1, y: 3 },
-                { x: 2, y: 1 },
-                { x: 3, y: 2 },
-                { x: 4, y: 2 },
-                { x: 5, y: 2 },
-                { x: 6, y: 6 },
+                {x: 0, y: 0},
+                {x: 1, y: 3},
+                {x: 2, y: 1},
+                {x: 3, y: 2},
+                {x: 4, y: 2},
+                {x: 5, y: 2},
+                {x: 6, y: 6},
               ]}
-              padding={{ bottom: 0, right: 0, top: 0, left: 0 }}>
+              padding={{bottom: 0, right: 0, top: 0, left: 0}}>
               <Line
                 smoothing="bezier"
                 tension={0.4}
-                theme={{ stroke: { color: GREEN, width: 1.5 } }}
+                theme={{stroke: {color: GREEN, width: 1.5}}}
               />
             </Chart>
           </View>
@@ -337,32 +337,62 @@ function CryptoPosition(props) {
         animationIn={'slideInUp'}
         animationOut={'slideOutDown'}
         swipeDirection="down"
-        style={{ margin: 0 }}>
+        style={{margin: 0}}>
         <View style={CommonStyles.modalView}>
           <View style={CommonStyles.modalTopLine} />
 
-          <TouchableOpacity style={[SpaceStyles.top2, SpaceStyles.row]} onPress={() => { setTradeModal(false), navigation.navigate('BuyCryptoScreen') }}>
-            <Image source={plus} style={SpaceStyles.top1} resizeMode="contain" />
+          <TouchableOpacity
+            style={[SpaceStyles.top3, SpaceStyles.row]}
+            onPress={() => {
+              setTradeModal(false), navigation.navigate('BuyCryptoScreen');
+            }}>
+            <Image
+              source={plus}
+              style={SpaceStyles.top1}
+              resizeMode="contain"
+            />
             <View style={SpaceStyles.left3}>
-              <CustomText text={'Buy BTC'} style={[TextStyles.textBold16Black]} />
+              <CustomText
+                text={'Buy BTC'}
+                style={[TextStyles.textBold16Black]}
+              />
               <Text>
-                <CustomText text={'Buying Power: '} style={[TextStyles.textMedium14]} />
-                <CustomText text={' $1,000.34'} style={[TextStyles.textMedium14DarkBlack]} />
+                <CustomText
+                  text={'Buying Power: '}
+                  style={[TextStyles.textMedium15]}
+                />
+                <CustomText
+                  text={' $1,000.34'}
+                  style={[TextStyles.textMedium15DarkBlack]}
+                />
               </Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={[SpaceStyles.top3, SpaceStyles.row]} onPress={() => { setTradeModal(false), navigation.navigate('SellCryptoScreen') }}>
+          <TouchableOpacity
+            style={[SpaceStyles.top3, SpaceStyles.row]}
+            onPress={() => {
+              setTradeModal(false), navigation.navigate('SellCryptoScreen');
+            }}>
             <Image
               source={minusIcon}
               style={SpaceStyles.top1}
               resizeMode="contain"
             />
             <View style={SpaceStyles.left3}>
-              <CustomText text={'Sell BTC'} style={[TextStyles.textBold16Black]} />
+              <CustomText
+                text={'Sell BTC'}
+                style={[TextStyles.textBold16Black]}
+              />
               <Text>
-                <CustomText text={'Available: '} style={[TextStyles.textMedium14]} />
-                <CustomText text={'0.45 BTC'} style={[TextStyles.textMedium14DarkBlack]} />
+                <CustomText
+                  text={'Available: '}
+                  style={[TextStyles.textMedium15]}
+                />
+                <CustomText
+                  text={'0.45 BTC'}
+                  style={[TextStyles.textMedium15DarkBlack]}
+                />
               </Text>
             </View>
           </TouchableOpacity>
@@ -379,7 +409,7 @@ function CryptoPosition(props) {
               />
               <CustomText
                 text={'Receive Bitcoin'}
-                style={[TextStyles.textMedium14]}
+                style={[TextStyles.textMedium15]}
               />
             </View>
           </View>
@@ -390,18 +420,15 @@ function CryptoPosition(props) {
               resizeMode="contain"
             />
             <View style={SpaceStyles.left3}>
-              <CustomText
-                text={'Send'}
-                style={[TextStyles.textBold16Black]}
-              />
+              <CustomText text={'Send'} style={[TextStyles.textBold16Black]} />
               <Text>
                 <CustomText
                   text={'Send Bitcoin: '}
-                  style={[TextStyles.textMedium14]}
+                  style={[TextStyles.textMedium15]}
                 />
                 <CustomText
                   text={'0.45 BTC'}
-                  style={[TextStyles.textMedium14DarkBlack]}
+                  style={[TextStyles.textMedium15DarkBlack]}
                 />
               </Text>
             </View>
@@ -419,7 +446,7 @@ function CryptoPosition(props) {
               />
               <CustomText
                 text={'Borrow from your credit line'}
-                style={[TextStyles.textMedium14]}
+                style={[TextStyles.textMedium15]}
               />
             </View>
           </View>
@@ -430,13 +457,10 @@ function CryptoPosition(props) {
               resizeMode="contain"
             />
             <View style={SpaceStyles.left3}>
-              <CustomText
-                text={'Repay'}
-                style={[TextStyles.textBold16Black]}
-              />
+              <CustomText text={'Repay'} style={[TextStyles.textBold16Black]} />
               <CustomText
                 text={'Repayment of your outstanding loan'}
-                style={[TextStyles.textMedium14]}
+                style={[TextStyles.textMedium15]}
               />
             </View>
           </View>
@@ -449,7 +473,7 @@ function CryptoPosition(props) {
           setTradeModal(true),
           ReactNativeHapticFeedback.trigger('impactLight', options),
         ]}>
-        <CustomText text={'Trade'} style={TextStyles.textBold16White} />
+        <CustomText text={'Transact'} style={TextStyles.textBold16White} />
       </TouchableOpacity>
     </View>
   );
